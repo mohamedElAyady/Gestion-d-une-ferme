@@ -2,6 +2,7 @@ package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Main;
 import com.example.mazraaty.Models.Production;
+import com.example.mazraaty.Models.Vente_lait;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
 
 import static com.example.mazraaty.Main.c;
 
-public class Production_controller {
+public class Vente_lait_controller {
 
     private PreparedStatement pst;
     private Stage stage;
@@ -35,17 +36,16 @@ public class Production_controller {
 
 
     //changement la
-    ObservableList<Production> productions = FXCollections.observableArrayList();
-
-
-    @FXML
-    private Button modifier_btn;
+    ObservableList<Vente_lait> vente_laits = FXCollections.observableArrayList();
 
     @FXML
     private Label pro_indivi;
 
     @FXML
     private Label prix_total;
+
+    @FXML
+    private Button modifier_btn;
 
     @FXML
     private TextField search_by_id;
@@ -55,22 +55,25 @@ public class Production_controller {
 
     //changement la
     @FXML
-    private TableView<Production> table;
+    private TableView<Vente_lait> table;
 
     @FXML
-    private TableColumn<Production, String> col5;
+    private TableColumn<Vente_lait, String> col5;
 
     @FXML
-    private TableColumn<Production, String> col3;
+    private TableColumn<Vente_lait, String> col6;
 
     @FXML
-    private TableColumn<Production, String> col4;
+    private TableColumn<Vente_lait, String> col3;
 
     @FXML
-    private TableColumn<Production, String> col1;
+    private TableColumn<Vente_lait, String> col4;
 
     @FXML
-    private TableColumn<Production, String> col2;
+    private TableColumn<Vente_lait, String> col1;
+
+    @FXML
+    private TableColumn<Vente_lait, String> col2;
 
     @FXML
     void tableaudeboard(ActionEvent event) throws IOException {
@@ -206,7 +209,7 @@ public class Production_controller {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
-        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
+        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_vente_lait_infos.fxml"));
         Scene scene1 = new Scene(root1);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Ajouter");
@@ -215,7 +218,7 @@ public class Production_controller {
         //specify modality for the new window
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.show();
-        primaryStage.setUserData(productions);
+        primaryStage.setUserData(vente_laits);
     }
 
     @FXML
@@ -229,20 +232,20 @@ public class Production_controller {
                 String id = search_by_id.getText();
 
                 //changement la
-                productions.clear();
+                vente_laits.clear();
 
                 //changement la
-                pst = c.prepareStatement("select date_enrg,ID_vache,litres,prix_litre,total from production WHERE ID_vache = ? ");
+                pst = c.prepareStatement("select name_client,date_enrg,ID,litres,prix_litre,total from vente_lait WHERE ID = ? ");
                 pst.setString(1, id);
                 rs = pst.executeQuery();
             }else if(search_by_id.getText().isEmpty()){
                 String  date =date_picker.getValue().toString();
 
                 //un changement la
-                productions.clear();
+                vente_laits.clear();
 
                 //changement la
-                pst = c.prepareStatement("select date_enrg,ID_vache,litres,prix_litre,total from production WHERE date_enrg = ? ");
+                pst = c.prepareStatement("select name_client,date_enrg,ID,litres,prix_litre,total from vente_lait WHERE date_enrg = ? ");
                 pst.setString(1, date);
                 rs = pst.executeQuery();
             }
@@ -250,19 +253,21 @@ public class Production_controller {
                 String id = search_by_id.getText();
                 String  date =date_picker.getValue().toString();
                 //changement la
-                productions.clear();
+                vente_laits.clear();
 
                 //changement la
-                pst = c.prepareStatement("select date_enrg,ID_vache,litres,prix_litre,total from production WHERE ID_vache = ? AND  date_enrg = ? ");
+                pst = c.prepareStatement("select name_client,date_enrg,ID,litres,prix_litre,total from vente_lait WHERE ID = ? AND  date_enrg = ? ");
                 pst.setString(1, id);
                 pst.setString(2, date);
                 rs = pst.executeQuery();
             }
             long k = 0;
             float p_t = 0;
+
             while (rs.next()) {
-                Production p = new Production();
-                p.setId(rs.getString("ID_vache"));
+                Vente_lait p = new Vente_lait();
+                p.setId(rs.getString("ID"));
+                p.setNom(rs.getString("name_client"));
                 p.setDate(rs.getString("date_enrg"));
                 p.setLitres(rs.getString("litres"));
                 p.setPrix(rs.getString("prix_litre"));
@@ -272,22 +277,24 @@ public class Production_controller {
                 k += Long.parseLong(p.getLitres());
                 p_t += Float.parseFloat(p.getTotal());
                 //changement la
-                productions.add(p);
+                vente_laits.add(p);
             }
             //changement la
-            table.setItems(productions);
+            table.setItems(vente_laits);
             col1.setCellValueFactory(f -> f.getValue().idProperty());
             col5.setCellValueFactory(f -> f.getValue().dateProperty());
+            col6.setCellValueFactory(f -> f.getValue().nomProperty());
             col3.setCellValueFactory(f -> f.getValue().litresProperty());
             col4.setCellValueFactory(f -> f.getValue().totalProperty());
             col2.setCellValueFactory(f -> f.getValue().PrixProperty());
+
             modifier_btn.setDisable(true);
             //print le somme
             pro_indivi.setText(String.valueOf(k)+" L");
             prix_total.setText(String.valueOf(p_t)+ " DH");
         } catch (SQLException ex)
         {
-            Logger.getLogger(Production_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vente_lait_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -296,11 +303,11 @@ public class Production_controller {
     @FXML
     private void refrech() throws SQLException {
         //changement la
-        productions.clear();
+        vente_laits.clear();
         initialize();
+        modifier_btn.setDisable(false);
         pro_indivi.setText("-----");
         prix_total.setText("-----");
-        modifier_btn.setDisable(false);
     }
 
     @FXML
@@ -315,7 +322,7 @@ public class Production_controller {
             alert.showAndWait();
         }else {
             //changement la
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_milk_infos.fxml"));
+            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vente_lait_infos.fxml"));
 
             Scene scene1 = new Scene(root1);
             primaryStage.setScene(scene1);
@@ -325,7 +332,7 @@ public class Production_controller {
             //specify modality for the new window
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             //pass id to update controller
-            Pass_production t = new Pass_production(id, productions);
+            Pass_vente_lait t = new Pass_vente_lait(id, vente_laits);
 
             primaryStage.setUserData(t);
             primaryStage.show();
@@ -333,32 +340,34 @@ public class Production_controller {
     }
 
     public void initialize() throws SQLException {
-
+        table();
         pro_indivi.setText("-----");
         prix_total.setText("-----");
-        table();
     }
 
-    public void refrech_table(ObservableList<Production> productions){
+    public void refrech_table(ObservableList<Vente_lait> vente_laits){
         try{
-            productions.clear();
+            vente_laits.clear();
 
             //changement la
-            pst = c.prepareStatement("select * from production");
+            pst = c.prepareStatement("select * from vente_lait");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 //changement la
-                Production p = new Production();
-                p.setId(rs.getString("ID_vache"));
-                p.setDate(rs.getString("date_enrg"));
+                Vente_lait p = new Vente_lait();
+                p.setId(rs.getString("ID"));
+                p.setNom(rs.getString("name_client"));
                 p.setLitres(rs.getString("litres"));
                 p.setPrix(rs.getString("prix_litre"));
+                p.setDate(rs.getString("date_enrg"));
                 p.setTotal(rs.getString("total"));
-                productions.add(p);
+                p.setKey(rs.getString("ID"));
+                //changement la
+                vente_laits.add(p);
             }
 
-            pro_indivi.setText("-----");
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -371,39 +380,41 @@ public class Production_controller {
         try {
 
             //changement la
-            pst = c.prepareStatement("select ID,date_enrg,ID_vache,litres,prix_litre,total from production");
+            pst = c.prepareStatement("select ID,name_client,litres,prix_litre,date_enrg,total from vente_lait");
             ResultSet rs = pst.executeQuery();
             {
                 while (rs.next()) {
                     //changement la
-                    Production p = new Production();
-                    p.setId(rs.getString("ID_vache"));
-                    p.setDate(rs.getString("date_enrg"));
+                    Vente_lait p = new Vente_lait();
+                    p.setId(rs.getString("ID"));
+                    p.setNom(rs.getString("name_client"));
                     p.setLitres(rs.getString("litres"));
                     p.setPrix(rs.getString("prix_litre"));
+                    p.setDate(rs.getString("date_enrg"));
                     p.setTotal(rs.getString("total"));
                     p.setKey(rs.getString("ID"));
                     //changement la
-                    productions.add(p);
+                    vente_laits.add(p);
 
                 }
             }
             //changement la
-            table.setItems(productions);
+            table.setItems(vente_laits);
             col1.setCellValueFactory(f -> f.getValue().idProperty());
             col5.setCellValueFactory(f -> f.getValue().dateProperty());
+            col6.setCellValueFactory(f -> f.getValue().nomProperty());
             col3.setCellValueFactory(f -> f.getValue().litresProperty());
             col4.setCellValueFactory(f -> f.getValue().totalProperty());
             col2.setCellValueFactory(f -> f.getValue().PrixProperty());
         } catch (SQLException ex)
         {
-            Logger.getLogger(Production_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vente_lait_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
 
         table.setRowFactory( tv -> {
-            TableRow<Production> myRow = new TableRow<>();
+            TableRow<Vente_lait> myRow = new TableRow<>();
             myRow.setOnMouseClicked (event ->
             {
                 if (event.getClickCount() == 1 && (!myRow.isEmpty()))

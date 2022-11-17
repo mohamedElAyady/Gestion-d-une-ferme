@@ -2,10 +2,15 @@ package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Main;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -129,4 +134,32 @@ public class Stage_controller {
 
     }
 
+
+
+    @FXML
+    private MenuItem m1;
+
+    @FXML
+    private MenuItem m2;
+
+    @FXML
+    private MenuItem m3;
+    @FXML
+    private MenuButton choise;
+
+    @FXML
+    private Label display;
+
+    EventHandler<ActionEvent> event1 = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent e) {
+            display.setText(((MenuItem)e.getSource()).getText() + " selected");
+        }
+        };
+
+    public void pass(ActionEvent e) {
+        m1.setOnAction(event1);
+        m3.setOnAction(event1);
+        m2.setOnAction(event1);
+    }
 }

@@ -1,0 +1,30 @@
+.menu_button{
+    -fx-background-color:#008037;
+    -fx-border-color:#000000;
+    -fx-text-fill:#ffffff;
+}
+.menu_button:pressed{
+    -fx-background-color:#52ab85;
+}
+.menu_button:hover{
+    -fx-background-color:#52ab85;
+}
+.search_bar{
+    -fx-background-radius:30px;
+    -fx-background-color: #52ab85;
+    -fx-prompt-text-fill: #ffffff;
+
+}
+.text_field{
+    -fx-font-size:19px;
+    -fx-background-radius:10;
+    -fx-prompt-text-fill: #7c7c7c;
+}
+.tableau{
+    -fx-font-size:14px;
+    -fx-border-color:#000000;
+
+}
+.column{
+    -fx-alignment : center;
+}

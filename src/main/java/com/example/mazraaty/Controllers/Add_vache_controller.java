@@ -1,7 +1,6 @@
 package com.example.mazraaty.Controllers;
 
-import com.example.mazraaty.Models.Production;
-import com.example.mazraaty.Models.Vente_lait;
+import com.example.mazraaty.Models.Vache;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,19 +18,18 @@ import java.time.LocalDate;
 
 import static com.example.mazraaty.Main.c;
 
-public class Add_vente_lait_controller {
+public class Add_vache_controller {
     public PreparedStatement pst;
     //Infos input
     @FXML
-    private TextField txt_field1;
+    private TextField ID;
     @FXML
-    private TextField txt_field2;
+    private TextField type;
     @FXML
-    private DatePicker date_picker;
+    private DatePicker date;
     @FXML
-    private TextField txt_field3;
-    @FXML
-    private TextField txt_field4;
+    private TextField status;
+
     @FXML
     private Label display;
     @FXML
@@ -39,40 +37,34 @@ public class Add_vente_lait_controller {
 
     @FXML
     void submit(ActionEvent event) throws IOException {
-        //changement la
-        String client,prix, total,litres;
+        String ID, type, status;
         LocalDate date;
 
-        client = this.txt_field1.getText();
-        prix = this.txt_field2.getText();
-        total = this.txt_field4.getText();
-        litres =this.txt_field3.getText();
-        date = this.date_picker.getValue();
-        if (client.isEmpty() || prix.isEmpty() || total.isEmpty() || litres.isEmpty() || date == null ){
+        ID = this.ID.getText();
+        type = this.type.getText();
+        status = this.status.getText();
+        date = this.date.getValue();
+        if (ID.isEmpty() || type.isEmpty() || status.isEmpty()  || date == null ){
             display.setText("vérifier vos informations !");
         }else {
             try {
-                //changement la
-                pst = c.prepareStatement("insert into vente_lait(name_client,litres,prix_litre,date_enrg,total)values(?,?,?,?,?)");
-                pst.setString(1, client);
-                pst.setString(2, litres);
-                pst.setString(3, prix);
+                pst = c.prepareStatement("insert into vaches (ID_vache,type,statut ,date_naiss)values(?,?,?,?)");
+                pst.setString(1, ID);
+                pst.setString(2, type);
+                pst.setString(3, status);
                 pst.setString(4, date.toString());
-                pst.setString(5, total);
-
                 pst.executeUpdate();
 
-                //get the data from Production_Controller using getUserData() method
+                //get the data from Vache_Controller using getUserData() method
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
-                new Vente_lait_controller().refrech_table(((ObservableList<Vente_lait>) stage.getUserData()));
+                new Vache_controller().refrech_table(((ObservableList<Vache>) stage.getUserData()));
 
                 //open the confirmation window
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-                //changer cet valeurs
-                alert.setTitle("les information de vente");
-                alert.setHeaderText("Bien ajouter !");
+                alert.setTitle("Vache infos");
+                alert.setHeaderText("Vaxche informations");
+                alert.setContentText("Bien ajouter !");
                 close_btn(event);
                 alert.showAndWait();
 

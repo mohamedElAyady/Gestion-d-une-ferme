@@ -308,6 +308,6 @@
                 <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

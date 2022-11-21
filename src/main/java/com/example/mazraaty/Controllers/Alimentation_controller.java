@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -83,133 +84,64 @@ public class Alimentation_controller {
     @FXML
     private TableColumn<Produit, String> col_pro2;
 
-
     @FXML
-    void tableaudeboard(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/tableau_de_board.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Tableau de board");
-        stage.show();
+    private Circle photo;
+
+
+    public void tableaudeboard(ActionEvent event) throws IOException {
+        new Stage_controller().tableaudeboard(event);
     }
 
-    @FXML
-    void utilisateur(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/utilisateur.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Utilisateur");
-        stage.show();
+    public void utilisateur(ActionEvent event) throws IOException {
+        new Stage_controller().utilisateur(event);
     }
 
-    @FXML
-    void vaccine(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vaccine.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Surveillance des vaccins");
-        stage.show();
+    public void vaccine(ActionEvent event) throws IOException {
+        new Stage_controller().vaccine(event);
     }
 
-    @FXML
-    void vente_vache(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vente_vache.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Vente de vaches");
-        stage.show();
+    public void vente_vache(ActionEvent event) throws IOException {
+        new Stage_controller().vente_vache(event);
     }
 
-    @FXML
-    void categorie_vache(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/categorie_vache.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Categorie de vache");
-        stage.show();
+    public void categorie_vache(ActionEvent event) throws IOException {
+        new Stage_controller().categorie_vache(event);
     }
 
-    @FXML
-    void alimentation(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/alimentation.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("L'alimentation");
-        stage.show();
+    public void alimentation(ActionEvent event) throws IOException {
+        new Stage_controller().alimentation(event);
     }
 
-    @FXML
-    void production(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/production.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Production");
-        stage.show();
+    public void production(ActionEvent event) throws IOException {
+        new Stage_controller().production(event);
     }
 
-    @FXML
-    void vente_lait(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vente_lait.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Vente de lait");
-        stage.show();
+    public void vente_lait(ActionEvent event) throws IOException {
+        new Stage_controller().vente_lait(event);
     }
 
-    @FXML
-    void vache(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vache.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Vache");
-        stage.show();
+    public void vache(ActionEvent event) throws IOException {
+        new Stage_controller().vache(event);
     }
 
-    @FXML
-    void settings(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/settings.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Settings");
-        stage.show();
+    public void settings(ActionEvent event) throws IOException {
+        new Stage_controller().settings(event);
     }
 
-    @FXML
-    void search(ActionEvent event) throws IOException {
+    public void search(ActionEvent event) throws IOException {
+        new Stage_controller().search(event);
+    }
+
+    public void print(ActionEvent event) throws IOException {
         System.out.println("this function is not working yet !!");
     }
 
-    @FXML
-    void print(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+    public void close_btn(ActionEvent event) throws IOException {
+        new Stage_controller().close_btn(event);
     }
 
-    @FXML
-    void close_btn(ActionEvent event) throws IOException, SQLException {
-        Stage stage1;
-        stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        c.close();
-        System.out.println("Connection closed !");
-        stage1.close();
-    }
-
-    @FXML
-    void log_out(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage log_stage = new Stage();
-        Main log_in = new Main();
-        stage.close();
-        log_in.start(log_stage);
+    public void log_out(ActionEvent event) throws IOException {
+        new Stage_controller().log_out(event);
 
     }
 
@@ -232,7 +164,6 @@ public class Alimentation_controller {
 
     @FXML
     public void table_search(ActionEvent event) {
-
 
         ResultSet rs = null;
 
@@ -335,6 +266,7 @@ public class Alimentation_controller {
     }
 
     public void initialize() throws SQLException {
+        new Stage_controller().profil_img(photo);
         id = -1;
         table();
         pro_table();
@@ -507,7 +439,7 @@ public class Alimentation_controller {
         try {
 
             //changement la
-            pst = c.prepareStatement("select * from stock");
+            pst = c.prepareStatement("select * from stock_disp");
             ResultSet rs = pst.executeQuery();
             {
 
@@ -515,11 +447,8 @@ public class Alimentation_controller {
                     Produit p = new Produit();
                     p.setprod(rs.getString("produit"));
                     p.setQuantite(rs.getString("quantite"));
-                    pst2 = c.prepareStatement("SELECT SUM(quantite) AS somme FROM stock WHERE produit = '"+p.getprod()+"'");
-                    ResultSet rs2 = pst2.executeQuery();
-                    while (rs2.next()) {
-                        series1.getData().add(new XYChart.Data(p.getprod().toString(),rs2.getFloat("somme")));
-                    }
+                    series1.getData().add(new XYChart.Data(p.getprod(),Float.parseFloat(p.getQuantite())));
+
                 }
                 barchart.getData().add(series1);
             }

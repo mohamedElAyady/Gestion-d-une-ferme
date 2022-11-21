@@ -13,182 +13,159 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0"
-            prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.mazraaty.Controllers.Stage_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Stage_controller">
     <children>
         <VBox prefHeight="655.0" prefWidth="264.0" style="-fx-background-color: white;">
             <children>
-                <ImageView fitHeight="251.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true"
-                           translateX="11.0">
+                <ImageView fitHeight="251.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" translateX="11.0">
                     <image>
-                        <Image url="@../../../images/logo.png"/>
+                        <Image url="@../../../images/logo.png" />
                     </image>
                 </ImageView>
-                <Button mnemonicParsing="false" onAction="#tableaudeboard" prefHeight="51.0" prefWidth="269.0"
-                        styleClass="menu_button" stylesheets="@style.css" text="Tableau de board">
+                <Button mnemonicParsing="false" onAction="#tableaudeboard" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Tableau de board">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="239.0" mnemonicParsing="false" onAction="#utilisateur" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Utilisateur">
+                <Button layoutX="10.0" layoutY="239.0" mnemonicParsing="false" onAction="#utilisateur" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Utilisateur">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" onAction="#vache" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vache">
+                <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" onAction="#vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vache">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="341.0" mnemonicParsing="false" onAction="#categorie_vache"
-                        prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Catégorie de vaches">
+                <Button layoutX="10.0" layoutY="341.0" mnemonicParsing="false" onAction="#categorie_vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Catégorie de vaches">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="494.0" mnemonicParsing="false" onAction="#vente_vache" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de vaches">
+                <Button layoutX="10.0" layoutY="494.0" mnemonicParsing="false" onAction="#vente_vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de vaches">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="545.0" mnemonicParsing="false" onAction="#vaccine" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Surveillance des vaccins">
+                <Button layoutX="10.0" layoutY="545.0" mnemonicParsing="false" onAction="#vaccine" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Surveillance des vaccins">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="392.0" mnemonicParsing="false" onAction="#alimentation"
-                        prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Surveillance des aliments">
+                <Button layoutX="10.0" layoutY="392.0" mnemonicParsing="false" onAction="#alimentation" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Surveillance des aliments">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="443.0" mnemonicParsing="false" onAction="#production" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Collecte de lait">
+                <Button layoutX="10.0" layoutY="443.0" mnemonicParsing="false" onAction="#production" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Collecte de lait">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#vente_lait" prefHeight="36.0"
-                        prefWidth="264.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de lait">
+                <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#vente_lait" prefHeight="36.0" prefWidth="264.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de lait">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                 </Button>
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
         </VBox>
-        <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0"
-              style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
+        <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
             <children>
-                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0"
-                       style="-fx-label-padding: 20;" text="PAge name">
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="PAge name">
                     <font>
-                        <Font name="Yu Gothic Medium" size="33.0"/>
+                        <Font name="Yu Gothic Medium" size="33.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT"/>
+                        <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </Label>
-                <TextField prefHeight="35.0" prefWidth="379.0" promptText="     recherche" styleClass="search_bar"
-                           stylesheets="@style.css">
+                <TextField prefHeight="35.0" prefWidth="379.0" promptText="     recherche" styleClass="search_bar" stylesheets="@style.css">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                     <padding>
-                        <Insets left="7.0"/>
+                        <Insets left="7.0" />
                     </padding>
                 </TextField>
                 <Button mnemonicParsing="false" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/search.png"/>
+                                <Image url="@../../../images/search.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <HBox.margin>
-                        <Insets left="6.0"/>
+                        <Insets left="6.0" />
                     </HBox.margin>
                 </Button>
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
         </HBox>
-        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="90.0" prefHeight="565.0" prefWidth="848.0"
-                    style="-fx-background-color: white; -fx-border-color: black;"/>
+        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="90.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;" />
         <VBox layoutX="1112.0" layoutY="139.0" prefHeight="435.0" prefWidth="34.0" style="-fx-background-color: white;">
             <children>
                 <Button mnemonicParsing="false" onAction="#settings" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/settings.png"/>
+                                <Image url="@../../../images/settings.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="40.0" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/printer.png"/>
+                                <Image url="@../../../images/printer.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#log_out"
-                        style="-fx-background-color: white;">
+                <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#log_out" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/log-out.png"/>
+                                <Image url="@../../../images/log-out.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#close_btn" prefHeight="40.0"
-                        prefWidth="33.0" style="-fx-background-color: white;">
+                <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#close_btn" prefHeight="40.0" prefWidth="33.0" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fitHeight="59.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-1.0">
+                        <ImageView fitHeight="59.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" translateX="-1.0">
                             <image>
-                                <Image url="@../../../images/close.png"/>
+                                <Image url="@../../../images/close.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="6.0"/>
+                        <Insets bottom="30.0" left="6.0" />
                     </VBox.margin>
                 </Button>
             </children>
             <padding>
-                <Insets top="25.0"/>
+                <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE"/>
+        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

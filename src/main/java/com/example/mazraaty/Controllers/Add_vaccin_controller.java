@@ -1,7 +1,7 @@
 package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Models.Production;
-import com.example.mazraaty.Models.Vente_lait;
+import com.example.mazraaty.Models.Vaccine;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 
 import static com.example.mazraaty.Main.c;
 
-public class Add_vente_lait_controller {
+public class Add_vaccin_controller {
     public PreparedStatement pst;
     //Infos input
     @FXML
@@ -31,48 +31,45 @@ public class Add_vente_lait_controller {
     @FXML
     private TextField txt_field3;
     @FXML
-    private TextField txt_field4;
+    private DatePicker date_picker1;
     @FXML
     private Label display;
-    @FXML
-    private TextField recherche;
 
     @FXML
     void submit(ActionEvent event) throws IOException {
         //changement la
-        String client,prix, total,litres;
-        LocalDate date;
+        String ID, vaccin, remarque;
+        LocalDate date1,date2;
 
-        client = this.txt_field1.getText();
-        prix = this.txt_field2.getText();
-        total = this.txt_field4.getText();
-        litres =this.txt_field3.getText();
-        date = this.date_picker.getValue();
-        if (client.isEmpty() || prix.isEmpty() || total.isEmpty() || litres.isEmpty() || date == null ){
+        ID = this.txt_field1.getText();
+        vaccin = this.txt_field2.getText();
+        remarque = this.txt_field3.getText();
+        date1 = this.date_picker.getValue();
+        date2 = this.date_picker1.getValue();
+        if (ID.isEmpty() || vaccin.isEmpty() || date2==null || date1 == null ){
             display.setText("vérifier vos informations !");
         }else {
             try {
 
                 //changement la
-                pst = c.prepareStatement("insert into vente_lait(name_client,litres,prix_litre,date_enrg,total)values(?,?,?,?,?)");
-                pst.setString(1, client);
-                pst.setString(2, litres);
-                pst.setString(3, prix);
-                pst.setString(4, date.toString());
-                pst.setString(5, total);
-
+                pst = c.prepareStatement("insert into vaccine(ID_vache,date_next_vacc,vaccine,remarque,date_enrg)values(?,?,?,?,?)");
+                pst.setString(1, ID);
+                pst.setString(2, date2.toString());
+                pst.setString(3, vaccin);
+                pst.setString(4, remarque);
+                pst.setString(5, date1.toString());
                 pst.executeUpdate();
 
                 //get the data from Production_Controller using getUserData() method
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
-                new Vente_lait_controller().refrech_table(((ObservableList<Vente_lait>) stage.getUserData()));
+                new Vaccine_controller().refrech_table(((ObservableList<Vaccine>) stage.getUserData()));
 
                 //open the confirmation window
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
                 //changer cet valeurs
-                alert.setTitle("les information de vente");
+                alert.setTitle("Vaccination infos");
                 alert.setHeaderText("Bien ajouter !");
                 close_btn(event);
                 alert.showAndWait();

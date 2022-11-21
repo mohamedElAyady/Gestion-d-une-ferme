@@ -21,6 +21,8 @@ import static com.example.mazraaty.Main.c;
 
 public class Add_alimentation_controller {
     public PreparedStatement pst;
+    public PreparedStatement pst2;
+    public PreparedStatement pst3;
     //Infos input
     @FXML
     private TextField txt_field1;
@@ -65,6 +67,17 @@ public class Add_alimentation_controller {
                 pst.setString(4, produit);
                 pst.setString(5, date.toString());
                 pst.executeUpdate();
+
+                pst2 = c.prepareStatement("select quantite from stock_disp WHERE produit  = ?");
+                pst2.setString(1, produit);
+                ResultSet rs1 = pst2.executeQuery();
+                while (rs1.next()){
+                    float f = rs1.getFloat(1)-Float.parseFloat(quantite);
+                pst3 = c.prepareStatement("UPDATE stock_disp SET quantite= ?  WHERE produit= ? ");
+                pst3.setString(1,String.valueOf(f) );
+                pst3.setString(2, produit);
+                pst3.executeUpdate();
+                }
 
                 //get the data from Production_Controller using getUserData() method
                 Node node = (Node) event.getSource();

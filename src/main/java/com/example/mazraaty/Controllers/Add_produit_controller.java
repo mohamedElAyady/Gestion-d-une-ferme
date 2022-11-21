@@ -41,24 +41,19 @@ public class Add_produit_controller {
             display.setText("vérifier vos informations !");
         }else {
             try {
+
                 //changement la
                 pst = c.prepareStatement("insert into stock(produit,quantite)values(?,?)");
                 pst.setString(1, produit);
                 pst.setString(2, quantite);
                 pst.executeUpdate();
-
+                fill_stock(produit,quantite);
                 //get the data from Production_Controller using getUserData() method
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
 
-                //open the confirmation window
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-                //changer cet valeurs
-                alert.setTitle("Produit");
-                alert.setHeaderText("Bien ajouter !");
                 close_btn(event);
-                alert.showAndWait();
 
 
             } catch (SQLException ee) {
@@ -79,30 +74,36 @@ public class Add_produit_controller {
 
 
 
-    void fill_stock(String pr , float q) throws SQLException {
-        pst2 = c.prepareStatement("select * from stock_disp");
+    void fill_stock(String pr , String q) throws SQLException {
+        pst2 = c.prepareStatement("select COUNT(produit) from stock_disp WHERE produit  = ?");
+        pst2.setString(1, pr);
         ResultSet rs1 = pst2.executeQuery();
 
-        List<String> li = new LinkedList<>();
         while (rs1.next()){
-            li.add(rs1.getString("produit"));
-        }
-        pst2 = c.prepareStatement("select * from stock_disp where produit = '"+pr+"'");
-        ResultSet rs2 = pst2.executeQuery();
-
-            if (li.contains(pr)) {
-
-                q += rs2.getFloat("quantite");
+            if (rs1.getInt(1) > 0){
                 pst2 = c.prepareStatement("UPDATE stock_disp SET quantite= ?  WHERE produit= ? ");
-                pst2.setString(1, String.valueOf(q));
+                pst2.setString(1, q);
                 pst2.setString(2, pr);
                 pst2.executeUpdate();
-            } else {
+                //open the confirmation window
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                //changer cet valeurs
+                alert.setTitle("Produit");
+                alert.setHeaderText("Bien Augmenter !");
+                alert.showAndWait();
+            }else{
                 pst = c.prepareStatement("insert into stock_disp(produit,quantite)values(?,?)");
                 pst.setString(1, pr);
                 pst.setString(2, String.valueOf(q));
                 pst.executeUpdate();
+                //open the confirmation window
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                //changer cet valeurs
+                alert.setTitle("Produit");
+                alert.setHeaderText("Bien ajouter !");
+                alert.showAndWait();
             }
+        }
         }
     }
 

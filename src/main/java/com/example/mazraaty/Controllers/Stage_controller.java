@@ -10,6 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -139,6 +142,10 @@ public class Stage_controller {
 
 
     @FXML
+    private Circle photo;
+
+
+    @FXML
     private ComboBox<String> choisebox;
     PreparedStatement pst;
     ObservableList<String> options = FXCollections.observableArrayList(
@@ -167,4 +174,20 @@ public class Stage_controller {
 
     }
 
+    public void profil_img(Circle photo) throws SQLException {
+        pst = c.prepareStatement("SELECT * FROM admin where ID = (select MAX(ID) from admin)");
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()){
+            String s = "C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\admin_photos\\"+rs.getString(11);
+            Image im = new Image(s,false);
+            photo.setFill(new ImagePattern(im));
+
+        }
     }
+
+    public void initialize() throws SQLException {
+        profil_img(photo);
+    }
+}
+

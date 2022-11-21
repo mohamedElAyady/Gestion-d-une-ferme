@@ -147,7 +147,7 @@
         </VBox>
         <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
             <children>
-                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Surveillance des aliments">
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Alimentation">
                     <font>
                         <Font name="Yu Gothic Medium" size="33.0" />
                     </font>
@@ -332,6 +332,6 @@
                 <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

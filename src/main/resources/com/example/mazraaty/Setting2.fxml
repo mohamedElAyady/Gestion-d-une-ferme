@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorepane" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Add_admin_infos">
+   <children>
+      <Circle fx:id="photo" fill="DODGERBLUE" layoutX="217.0" layoutY="115.0" radius="79.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="43.0" layoutY="222.0" prefHeight="35.0" prefWidth="158.0" text="Prenom :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="222.0" prefHeight="35.0" prefWidth="158.0" text="Nom :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="232.0" layoutY="337.0" prefHeight="35.0" prefWidth="158.0" text="Password :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="454.0" prefHeight="35.0" prefWidth="158.0" text="Email :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="sexe" layoutX="426.0" layoutY="153.0" prefHeight="36.0" prefWidth="164.0" styleClass="text_field" stylesheets="@style.css" />
+      <TextField fx:id="nom" layoutX="229.0" layoutY="258.0" prefHeight="36.0" prefWidth="164.0" styleClass="text_field" stylesheets="@style.css" />
+      <Label layoutX="426.0" layoutY="117.0" prefHeight="35.0" prefWidth="158.0" text="Sexe :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="606.0" layoutY="117.0" prefHeight="36.0" prefWidth="217.0" text="Date de naissance :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="date" layoutX="606.0" layoutY="153.0" prefHeight="36.0" prefWidth="210.0" styleClass="text_field" stylesheets="@style.css" />
+      <Label layoutX="430.0" layoutY="355.0" prefHeight="35.0" prefWidth="158.0" text="Adresse :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="prenom" layoutX="43.0" layoutY="258.0" prefHeight="36.0" prefWidth="164.0" styleClass="text_field" stylesheets="@style.css" />
+      <TextField fx:id="password" layoutX="236.0" layoutY="373.0" prefHeight="36.0" prefWidth="164.0" styleClass="text_field" stylesheets="@style.css" />
+      <TextField fx:id="email" layoutX="43.0" layoutY="490.0" prefHeight="36.0" prefWidth="357.0" styleClass="text_field" stylesheets="@style.css" />
+      <TextField fx:id="adresse" alignment="TOP_LEFT" layoutX="427.0" layoutY="391.0" prefHeight="95.0" prefWidth="396.0" styleClass="text_field" stylesheets="@style.css" />
+      <Button layoutX="246.0" layoutY="154.0" mnemonicParsing="false" onAction="#add_photo" prefHeight="36.0" prefWidth="37.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/edit_pro.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="641.0" layoutY="510.0" mnemonicParsing="false" onAction="#submit" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #52ab85; -fx-text-fill: white; -fx-background-radius: 20;" text="ajouter">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="483.0" layoutY="510.0" mnemonicParsing="false" onAction="#effacer" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #ff2828; -fx-text-fill: white; -fx-background-radius: 20;" text="effacer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="40.0" layoutY="337.0" prefHeight="35.0" prefWidth="158.0" text="Username :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username" layoutX="40.0" layoutY="373.0" prefHeight="36.0" prefWidth="164.0" styleClass="text_field" stylesheets="@style.css" />
+      <Button layoutX="772.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/previous.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="427.0" layoutY="245.0" prefHeight="36.0" prefWidth="176.0" text="N° téléphone :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phone" layoutX="428.0" layoutY="281.0" prefHeight="36.0" prefWidth="357.0" styleClass="text_field" stylesheets="@style.css" />
+   </children>
+</AnchorPane>

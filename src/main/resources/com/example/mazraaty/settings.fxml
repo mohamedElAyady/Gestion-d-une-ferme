@@ -9,262 +9,352 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0"
-            prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.mazraaty.Controllers.Stage_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Setting_controller">
     <children>
         <VBox prefHeight="655.0" prefWidth="264.0" style="-fx-background-color: white;">
             <children>
-                <ImageView fitHeight="251.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true"
-                           translateX="11.0">
+                <ImageView fitHeight="251.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" translateX="11.0">
                     <image>
-                        <Image url="@../../../images/logo.png"/>
+                        <Image url="@../../../images/logo.png" />
                     </image>
                 </ImageView>
-                <Button mnemonicParsing="false" onAction="#tableaudeboard" prefHeight="51.0" prefWidth="269.0"
-                        styleClass="menu_button" stylesheets="@style.css" text="Tableau de board">
+                <Button mnemonicParsing="false" onAction="#tableaudeboard" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Tableau de board">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-9.0">
+                        <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" translateX="-9.0">
                             <image>
-                                <Image url="@../../../images/dashboard.png"/>
+                                <Image url="@../../../images/dashboard.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Button>
-                <Button layoutX="10.0" layoutY="239.0" mnemonicParsing="false" onAction="#utilisateur" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Utilisateur">
+                <Button layoutX="10.0" layoutY="239.0" mnemonicParsing="false" onAction="#utilisateur" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Utilisateur">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/people.png"/>
+                                <Image url="@../../../images/people.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" onAction="#vache" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vache">
+                <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" onAction="#vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vache">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="29.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/cow-silhouette.png"/>
+                                <Image url="@../../../images/cow-silhouette.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="341.0" mnemonicParsing="false" onAction="#categorie_vache"
-                        prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Catégorie de vaches">
+                <Button layoutX="10.0" layoutY="341.0" mnemonicParsing="false" onAction="#categorie_vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Catégorie de vaches">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="26.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/categories.png"/>
+                                <Image url="@../../../images/categories.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="494.0" mnemonicParsing="false" onAction="#vente_vache" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de vaches">
+                <Button layoutX="10.0" layoutY="494.0" mnemonicParsing="false" onAction="#vente_vache" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de vaches">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="28.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="28.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/auction.png"/>
+                                <Image url="@../../../images/auction.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="545.0" mnemonicParsing="false" onAction="#vaccine" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Surveillance des vaccins">
+                <Button layoutX="10.0" layoutY="545.0" mnemonicParsing="false" onAction="#vaccine" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Surveillance des vaccins">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="24.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/vaccine.png"/>
+                                <Image url="@../../../images/vaccine.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="392.0" mnemonicParsing="false" onAction="#alimentation"
-                        prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css"
-                        text="Surveillance des aliments">
+                <Button layoutX="10.0" layoutY="392.0" mnemonicParsing="false" onAction="#alimentation" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Surveillance des aliments">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="23.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/feed.png"/>
+                                <Image url="@../../../images/feed.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="443.0" mnemonicParsing="false" onAction="#production" prefHeight="51.0"
-                        prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Collecte de lait">
+                <Button layoutX="10.0" layoutY="443.0" mnemonicParsing="false" onAction="#production" prefHeight="51.0" prefWidth="269.0" styleClass="menu_button" stylesheets="@style.css" text="Collecte de lait">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="26.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/milk.png"/>
+                                <Image url="@../../../images/milk.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#vente_lait" prefHeight="36.0"
-                        prefWidth="264.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de lait">
+                <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#vente_lait" prefHeight="36.0" prefWidth="264.0" styleClass="menu_button" stylesheets="@style.css" text="Vente de lait">
                     <font>
-                        <Font name="Andalus" size="19.0"/>
+                        <Font name="Andalus" size="19.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-10.0">
+                        <ImageView fitHeight="30.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/acquisition.png"/>
+                                <Image url="@../../../images/acquisition.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
         </VBox>
-        <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0"
-              style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
+        <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
             <children>
-                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0"
-                       style="-fx-label-padding: 20;" text="Settings">
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Settings">
                     <font>
-                        <Font name="Yu Gothic Medium" size="33.0"/>
+                        <Font name="Yu Gothic Medium" size="33.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT"/>
+                        <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </Label>
-                <TextField fx:id="recherche" prefHeight="35.0" prefWidth="379.0" promptText="     recherche"
-                           styleClass="search_bar" stylesheets="@style.css">
+                <TextField fx:id="recherche" prefHeight="35.0" prefWidth="379.0" promptText="     recherche" styleClass="search_bar" stylesheets="@style.css">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                     <padding>
-                        <Insets left="7.0"/>
+                        <Insets left="7.0" />
                     </padding>
                 </TextField>
                 <Button mnemonicParsing="false" onAction="#search" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/search.png"/>
+                                <Image url="@../../../images/search.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <HBox.margin>
-                        <Insets left="6.0"/>
+                        <Insets left="6.0" />
                     </HBox.margin>
                 </Button>
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
         </HBox>
-        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0"
-                    style="-fx-background-color: white; -fx-border-color: black;"/>
         <VBox layoutX="1112.0" layoutY="139.0" prefHeight="435.0" prefWidth="34.0" style="-fx-background-color: white;">
             <children>
                 <Button mnemonicParsing="false" onAction="#settings" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/settings.png"/>
+                                <Image url="@../../../images/settings.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#print" prefHeight="48.0" prefWidth="40.0"
-                        style="-fx-background-color: white;">
+                <Button mnemonicParsing="false" onAction="#print" prefHeight="48.0" prefWidth="40.0" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/printer.png"/>
+                                <Image url="@../../../images/printer.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#log_out"
-                        style="-fx-background-color: white;">
+                <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#log_out" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/log-out.png"/>
+                                <Image url="@../../../images/log-out.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="4.0"/>
+                        <Insets bottom="30.0" left="4.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#close_btn" prefHeight="40.0"
-                        prefWidth="33.0" style="-fx-background-color: white;">
+                <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#close_btn" prefHeight="40.0" prefWidth="33.0" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fitHeight="59.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true"
-                                   translateX="-1.0">
+                        <ImageView fitHeight="59.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" translateX="-1.0">
                             <image>
-                                <Image url="@../../../images/close.png"/>
+                                <Image url="@../../../images/close.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" left="6.0"/>
+                        <Insets bottom="30.0" left="6.0" />
                     </VBox.margin>
                 </Button>
             </children>
             <padding>
-                <Insets top="25.0"/>
+                <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE"/>
+        <Circle fx:id="photo1" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <StackPane fx:id="stackpane" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0" style="-fx-border-color: black;">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle fx:id="photo" fill="DODGERBLUE" layoutX="197.0" layoutY="123.0" radius="79.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="39.0" layoutY="240.0" prefHeight="35.0" prefWidth="158.0" text="Prenom :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prenom" layoutX="39.0" layoutY="276.0" prefHeight="36.0" prefWidth="179.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="Mohamed">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nom" layoutX="252.0" layoutY="276.0" prefHeight="36.0" prefWidth="179.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="El ayady">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="252.0" layoutY="240.0" prefHeight="35.0" prefWidth="158.0" text="Nom :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="358.0" prefHeight="35.0" prefWidth="158.0" text="UserName :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="username" layoutX="39.0" layoutY="394.0" prefHeight="36.0" prefWidth="179.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="admin">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="474.0" prefHeight="35.0" prefWidth="158.0" text="Email :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" layoutX="39.0" layoutY="510.0" prefHeight="36.0" prefWidth="394.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="Mohamed">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="440.0" layoutY="148.0" prefHeight="35.0" prefWidth="158.0" text="Sexe :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sexe" layoutX="441.0" layoutY="184.0" prefHeight="36.0" prefWidth="164.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="male">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="612.0" layoutY="148.0" prefHeight="36.0" prefWidth="217.0" text="Date de naissance :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date" layoutX="612.0" layoutY="184.0" prefHeight="36.0" prefWidth="217.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="19/10/1990">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="441.0" layoutY="392.0" prefHeight="35.0" prefWidth="158.0" text="Adresse :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="adresse" alignment="TOP_LEFT" layoutX="442.0" layoutY="428.0" prefHeight="91.0" prefWidth="392.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="hay mohmmadi taroudant morocco">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="252.0" layoutY="356.0" prefHeight="35.0" prefWidth="158.0" text="Password :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="password" layoutX="252.0" layoutY="394.0" prefHeight="36.0" prefWidth="179.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="**********">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="650.0" layoutY="54.0" mnemonicParsing="false" onAction="#modifier" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #ff962d; -fx-text-fill: black; -fx-background-radius: 20;" text="modifier">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="473.0" layoutY="54.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="41.0" prefWidth="164.0" style="-fx-background-color: #40a858; -fx-text-fill: white; -fx-background-radius: 20;" text="nouvel admin">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="441.0" layoutY="276.0" prefHeight="36.0" prefWidth="173.0" text="N° téléphone :">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phone" layoutX="441.0" layoutY="312.0" prefHeight="36.0" prefWidth="394.0" style="-fx-border-color: gray; -fx-border-radius: 10;" styleClass="text_field" stylesheets="@style.css" text="(+212)-----------">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
     </children>
 </AnchorPane>

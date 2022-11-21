@@ -1,8 +1,8 @@
 package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Main;
-import com.example.mazraaty.Models.Vache;
-
+import com.example.mazraaty.Models.Production;
+import com.example.mazraaty.Models.Vaccine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,15 +26,18 @@ import java.util.logging.Logger;
 
 import static com.example.mazraaty.Main.c;
 
-public class Vache_controller {
+public class Vaccine_controller {
 
     private PreparedStatement pst;
     private Stage stage;
     private Scene scene;
     private Parent root;
     int myIndex;
-    int id;
-    ObservableList<Vache> vaches = FXCollections.observableArrayList();
+    int id = -1;
+
+
+    //changement la
+    ObservableList<Vaccine> vaccines = FXCollections.observableArrayList();
 
 
     @FXML
@@ -46,25 +49,28 @@ public class Vache_controller {
     @FXML
     private DatePicker date_picker;
 
+    //changement la
     @FXML
-    private TableView<Vache> table;
+    private TableView<Vaccine> table;
 
     @FXML
-    private TableColumn<Vache, String> col_date;
+    private TableColumn<Vaccine, String> col5;
 
     @FXML
-    private TableColumn<Vache, String> col_type;
+    private TableColumn<Vaccine, String> col3;
 
     @FXML
-    private TableColumn<Vache, String> col_status;
+    private TableColumn<Vaccine, String> col4;
 
     @FXML
-    private TableColumn<Vache, String> id_col;
+    private TableColumn<Vaccine, String> col1;
+
+    @FXML
+    private TableColumn<Vaccine, String> col2;
+
 
     @FXML
     private Circle photo;
-
-
 
     public void tableaudeboard(ActionEvent event) throws IOException {
         new Stage_controller().tableaudeboard(event);
@@ -123,14 +129,12 @@ public class Vache_controller {
 
     }
 
-
-
     @FXML
     void add_infos(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
-        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_vache_infos.fxml"));
+        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_vaccin_infos.fxml"));
         Scene scene1 = new Scene(root1);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Ajouter");
@@ -139,7 +143,7 @@ public class Vache_controller {
         //specify modality for the new window
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.show();
-        primaryStage.setUserData(vaches);
+        primaryStage.setUserData(vaccines);
     }
 
     @FXML
@@ -151,47 +155,61 @@ public class Vache_controller {
         try {
             if(date_picker.getValue() == null){
                 String id = search_by_id.getText();
-                vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE ID_vache = ? ");
+
+                //changement la
+                vaccines.clear();
+
+                //changement la
+                pst = c.prepareStatement("select ID_vache,date_enrg,vaccine,remarque,date_next_vacc from vaccine WHERE ID_vache = ?");
                 pst.setString(1, id);
                 rs = pst.executeQuery();
             }else if(search_by_id.getText().isEmpty()){
                 String  date =date_picker.getValue().toString();
-                vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE date_naiss = ? ");
+
+                //un changement la
+                vaccines.clear();
+
+                //changement la
+                pst = c.prepareStatement("select ID_vache,date_enrg,vaccine,remarque,date_next_vacc from vaccine WHERE date_enrg = ? ");
                 pst.setString(1, date);
                 rs = pst.executeQuery();
             }
             else if (!date_picker.getValue().toString().isEmpty()&& !search_by_id.getText().isEmpty()){
                 String id = search_by_id.getText();
                 String  date =date_picker.getValue().toString();
-                vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE ID_vache = ? AND  date_naiss = ? ");
+                //changement la
+                vaccines.clear();
+
+                //changement la
+                pst = c.prepareStatement("select ID_vache,date_enrg,vaccine,remarque,date_next_vacc from vaccine WHERE ID_vache = ? AND  date_enrg = ? ");
                 pst.setString(1, id);
                 pst.setString(2, date);
                 rs = pst.executeQuery();
             }
-
+            long k = 0;
+            float p_t = 0;
             while (rs.next()) {
-                Vache p = new Vache();
-                p.setId(rs.getString("ID_vache"));
-                p.setDate(rs.getString("date_naiss"));
-                p.setType(rs.getString("type"));
-                p.setStatus(rs.getString("statut"));
+                Vaccine p = new Vaccine();
+                p.setID_vache(rs.getString("ID_vache"));
+                p.setDate_enrg(rs.getString("date_enrg"));
+                p.setVaccine(rs.getString("vaccine"));
+                p.setRemarque(rs.getString("remarque"));
+                p.setdate_next_vacc(rs.getString("date_next_vacc"));
 
-                vaches.add(p);
+                //changement la
+                vaccines.add(p);
             }
-            table.setItems(vaches);
-            id_col.setCellValueFactory(f -> f.getValue().idProperty());
-            col_date.setCellValueFactory(f -> f.getValue().dateProperty());
-            col_type.setCellValueFactory(f -> f.getValue().typeProperty());
-            col_status.setCellValueFactory(f -> f.getValue().statusProperty());
-
-
+            //changement la
+            table.setItems(vaccines);
+            col1.setCellValueFactory(f -> f.getValue().ID_vacheProperty());
+            col5.setCellValueFactory(f -> f.getValue().date_next_vaccProperty());
+            col3.setCellValueFactory(f -> f.getValue().date_enrgProperty());
+            col4.setCellValueFactory(f -> f.getValue().remarqueProperty());
+            col2.setCellValueFactory(f -> f.getValue().vaccineProperty());
             modifier_btn.setDisable(true);
         } catch (SQLException ex)
         {
-            Logger.getLogger(Vache_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vaccine_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -199,59 +217,65 @@ public class Vache_controller {
 
     @FXML
     private void refrech() throws SQLException {
-        vaches.clear();
+        //changement la
+        vaccines.clear();
         initialize();
         modifier_btn.setDisable(false);
     }
+
     @FXML
-   public void update(ActionEvent event) throws IOException{
-        if (id==-1){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ERRORE !!");
-            alert.setHeaderText("Choisire une item");
-            alert.showAndWait();
-        }else {
+    public void update(ActionEvent event) throws IOException{
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
-        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vache_infos.fxml"));
-        Scene scene1 = new Scene(root1);
-        primaryStage.setScene(scene1);
-        primaryStage.setTitle("Modifier");
-        //manage maximize, minimize and close button
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        //specify modality for the new window
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        //pass id to update controller
-            TEST2_vache t = new TEST2_vache(id,vaches);
+        if (id == -1){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error !");
+            alert.setHeaderText("Sélectionnez un item !");
+            alert.showAndWait();
+        }else {
+            //changement la
+            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vaccin_infos.fxml"));
 
-        primaryStage.setUserData(t);
-        primaryStage.show();}
+            Scene scene1 = new Scene(root1);
+            primaryStage.setScene(scene1);
+            primaryStage.setTitle("Modifier");
+            //manage maximize, minimize and close button
+            primaryStage.initStyle(StageStyle.TRANSPARENT);
+            //specify modality for the new window
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            //pass id to update controller
+            Pass_vaccine t = new Pass_vaccine(id, vaccines);
 
+            primaryStage.setUserData(t);
+            primaryStage.show();
+        }
     }
 
     public void initialize() throws SQLException {
         new Stage_controller().profil_img(photo);
-        id =-1;
+        id = -1;
         table();
     }
 
-    public void refrech_table(ObservableList<Vache> vaches){
+    public void refrech_table(ObservableList<Vaccine> vaccines){
         try{
-            vaches.clear();
-            pst = c.prepareStatement("select * from vaches");
+            vaccines.clear();
+
+            //changement la
+            pst = c.prepareStatement("select * from vaccine");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                Vache p = new Vache();
-                p.setId(rs.getString("ID_vache"));
-                p.setDate(rs.getString("date_naiss"));
-                p.setType(rs.getString("type"));
-                p.setStatus(rs.getString("statut"));
-
-                vaches.add(p);
+                //changement la
+                Vaccine p = new Vaccine();
+                p.setID_vache(rs.getString("ID_vache"));
+                p.setDate_enrg(rs.getString("date_enrg"));
+                p.setVaccine(rs.getString("vaccine"));
+                p.setRemarque(rs.getString("remarque"));
+                p.setdate_next_vacc(rs.getString("date_next_vacc"));
+                vaccines.add(p);
             }
-
 
 
         } catch (SQLException throwables) {
@@ -261,43 +285,48 @@ public class Vache_controller {
 
     public void table() throws SQLException {
 
-
         try {
-            pst = c.prepareStatement("select ID_vache,date_naiss,type,statut from vaches");
+
+            //changement la
+            pst = c.prepareStatement("select ID,ID_vache,date_enrg,vaccine,remarque,date_next_vacc from vaccine");
             ResultSet rs = pst.executeQuery();
             {
                 while (rs.next()) {
-                    Vache p = new Vache();
-                    p.setId(rs.getString("ID_vache"));
-                    p.setDate(rs.getString("date_naiss"));
-                    p.setType(rs.getString("type"));
-                    p.setStatus(rs.getString("statut"));
+                    //changement la
+                    Vaccine p = new Vaccine();
+                    p.setID_vache(rs.getString("ID_vache"));
+                    p.setDate_enrg(rs.getString("date_enrg"));
+                    p.setVaccine(rs.getString("vaccine"));
+                    p.setRemarque(rs.getString("remarque"));
+                    p.setdate_next_vacc(rs.getString("date_next_vacc"));
+                    p.setKey(rs.getString("ID"));
+                    //changement la
+                    vaccines.add(p);
 
-                    vaches.add(p);
                 }
             }
-            table.setItems(vaches);
-            id_col.setCellValueFactory(f -> f.getValue().idProperty());
-            col_date.setCellValueFactory(f -> f.getValue().dateProperty());
-           col_type.setCellValueFactory(f -> f.getValue().typeProperty());
-           col_status.setCellValueFactory(f -> f.getValue().statusProperty());
-
+            //changement la
+            table.setItems(vaccines);
+            col1.setCellValueFactory(f -> f.getValue().ID_vacheProperty());
+            col5.setCellValueFactory(f -> f.getValue().date_next_vaccProperty());
+            col3.setCellValueFactory(f -> f.getValue().date_enrgProperty());
+            col4.setCellValueFactory(f -> f.getValue().remarqueProperty());
+            col2.setCellValueFactory(f -> f.getValue().vaccineProperty());
         } catch (SQLException ex)
         {
-            Logger.getLogger(Vache_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vaccine_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
 
         table.setRowFactory( tv -> {
-            TableRow<Vache> myRow = new TableRow<>();
+            TableRow<Vaccine> myRow = new TableRow<>();
             myRow.setOnMouseClicked (event ->
             {
                 if (event.getClickCount() == 1 && (!myRow.isEmpty()))
                 {
                     myIndex = table.getSelectionModel().getSelectedIndex();
-                    id = Integer.parseInt(String.valueOf(table.getItems().get(myIndex).getId()));
-
+                    id = Integer.parseInt(String.valueOf(table.getItems().get(myIndex).getKey()));
                 }
             });
             return myRow;

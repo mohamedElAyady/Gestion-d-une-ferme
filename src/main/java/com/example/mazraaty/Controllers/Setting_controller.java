@@ -154,7 +154,7 @@ public class Setting_controller {
             adresse.setText(rs.getString(8));
             date.setText(rs.getString(7));
             phone.setText(rs.getString(10));
-            String s = "C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\admin_photos\\"+rs.getString(11);
+            String s = "C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+rs.getString(11);
             Image im = new Image(s,false);
             photo.setFill(new ImagePattern(im));
 

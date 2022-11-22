@@ -1,6 +1,10 @@
 package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Main;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,10 +19,14 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+
+
 
 import static com.example.mazraaty.Main.c;
 
@@ -121,8 +129,21 @@ public class Stage_controller {
         System.out.println("this function is not working yet !!");
     }
 
-    public void print(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+    public void print(ActionEvent event) throws IOException, DocumentException {
+
+        String file_name = "src/main/resources/PDF/test.pdf";
+        Document document = new Document();
+
+        PdfWriter.getInstance(document,new FileOutputStream(file_name));
+        document.open();
+
+        Paragraph para = new Paragraph("this is a test");
+        document.add(para);
+        document.close();
+
+
+
+
     }
 
     public void close_btn(ActionEvent event) throws IOException {
@@ -179,7 +200,8 @@ public class Stage_controller {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()){
-            String s = "C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\admin_photos\\"+rs.getString(11);
+            //change this path !!!!
+            String s = "C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos"+rs.getString(11);
             Image im = new Image(s,false);
             photo.setFill(new ImagePattern(im));
 
@@ -189,5 +211,8 @@ public class Stage_controller {
     public void initialize() throws SQLException {
         profil_img(photo);
     }
+
+
+
 }
 

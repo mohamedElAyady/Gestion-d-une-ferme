@@ -3,6 +3,10 @@ package com.example.mazraaty.Controllers;
 import com.example.mazraaty.Main;
 import com.example.mazraaty.Models.Vache;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +21,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -110,8 +117,63 @@ public class Vache_controller {
         new Stage_controller().search(event);
     }
 
-    public void print(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+    public void print(ActionEvent event) throws IOException, DocumentException, SQLException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        String hash_name =hashCode()+"-"+dtf.format(now);
+        String file_name = "src/main/resources/PDF/Vache-"+hash_name+".pdf";
+        Document document = new Document();
+
+        PdfWriter.getInstance(document,new FileOutputStream(file_name));
+        document.open();
+        //add image
+        Image img = Image.getInstance("src/main/resources/images/logo.png");
+        document.add(img);
+
+        //add paragraph
+        Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);
+        String p = "Vache Records : ";
+        Paragraph para = new Paragraph(p,f);
+        para.setAlignment(10);
+        document.add(para);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+
+        PdfPTable table = new PdfPTable(4);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Vache ID"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Type"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Statut"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Date d'enrg"));
+        table.addCell(c1);
+
+        table.setHeaderRows(1);
+
+        //changement la
+        pst = c.prepareStatement("select * from vaches");
+        ResultSet rs = pst.executeQuery();
+        {
+            while (rs.next()) {
+                table.addCell(rs.getString("ID_vache"));
+                table.addCell(rs.getString("type"));
+                table.addCell(rs.getString("statut"));
+                table.addCell(rs.getString("date_naiss"));
+            }
+        }
+
+        document.add(table);
+
+
+
+        document.close();
     }
 
     public void close_btn(ActionEvent event) throws IOException {

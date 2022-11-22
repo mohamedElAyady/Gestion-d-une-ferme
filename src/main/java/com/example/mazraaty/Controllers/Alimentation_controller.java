@@ -3,6 +3,10 @@ package com.example.mazraaty.Controllers;
 import com.example.mazraaty.Main;
 import com.example.mazraaty.Models.Alimentation;
 import com.example.mazraaty.Models.Produit;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,10 +23,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -132,8 +139,95 @@ public class Alimentation_controller {
         new Stage_controller().search(event);
     }
 
-    public void print(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+    public void print(ActionEvent event) throws IOException, SQLException, DocumentException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        String hash_name =hashCode()+"-"+dtf.format(now);
+        String file_name = "src/main/resources/PDF/Alimentation-"+hash_name+".pdf";
+        Document document = new Document();
+
+        PdfWriter.getInstance(document,new FileOutputStream(file_name));
+        document.open();
+        //add image
+        Image img = Image.getInstance("src/main/resources/images/logo.png");
+        document.add(img);
+
+        //add paragraph
+        Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);
+        String p = "Stock Records : ";
+        Paragraph para = new Paragraph(p,f);
+        document.add(para);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+
+        PdfPTable table = new PdfPTable(3);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("ID"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Produit"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Quantuté(Kg)"));
+        table.addCell(c1);
+
+        table.setHeaderRows(1);
+
+
+        //changement la
+        pst = c.prepareStatement("select * from stock");
+        ResultSet rs = pst.executeQuery();
+        {
+            while (rs.next()) {
+                table.addCell(rs.getString("ID"));
+                table.addCell(rs.getString("produit"));
+                table.addCell(rs.getString("quantite"));
+            }
+        }
+        document.add(table);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        //add paragraph
+        String p1 = "Stock Records : ";
+        para = new Paragraph(p,f);
+        document.add(para);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+
+        table = new PdfPTable(5);
+        c1 = new PdfPCell(new Phrase("ID"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Produit"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Quantite(Kg)"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Remarque"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Date d'enregistrement"));
+        table.addCell(c1);
+
+        table.setHeaderRows(1);
+        //changement la
+        pst = c.prepareStatement("select * from alimentation ");
+        rs = pst.executeQuery();
+        if(rs.next()){
+            table.addCell(rs.getString("ID_vache"));
+            table.addCell(rs.getString("produit"));
+            table.addCell(rs.getString("quantité"));
+            table.addCell(rs.getString("remarque"));
+            table.addCell(rs.getString("date_enrg"));
+        }
+        document.add(table);
+
+        document.close();
     }
 
     public void close_btn(ActionEvent event) throws IOException {

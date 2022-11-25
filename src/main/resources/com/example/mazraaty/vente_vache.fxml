@@ -3,7 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,9 +14,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Stage_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Vente_vache_controller">
     <children>
         <VBox prefHeight="655.0" prefWidth="264.0" style="-fx-background-color: white;">
             <children>
@@ -140,7 +144,7 @@
         </VBox>
         <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
             <children>
-                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Vente de vaches">
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Vente de vache">
                     <font>
                         <Font name="Yu Gothic Medium" size="33.0" />
                     </font>
@@ -176,7 +180,50 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;" />
+        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="567.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;">
+            <children>
+                <Button layoutX="669.0" layoutY="29.0" mnemonicParsing="false" onAction="#add_infos" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #52ab85; -fx-text-fill: white; -fx-background-radius: 20;" text="Ajouter">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <Line endX="424.0" layoutX="340.0" layoutY="83.0" startX="-253.0" stroke="#0000007c" />
+                <TableView fx:id="table" layoutX="4.0" layoutY="97.0" prefHeight="400.0" prefWidth="840.0" styleClass="tableau" stylesheets="@style.css">
+                    <columns>
+                        <TableColumn fx:id="col1" minWidth="0.0" prefWidth="147.0" style="-fx-aligment: center;" text="ID" />
+                        <TableColumn fx:id="col2" minWidth="0.0" prefWidth="164.0" style="-fx-aligment: center;" text="Prix de vache" />
+                        <TableColumn fx:id="col3" minWidth="0.0" prefWidth="184.0" style="-fx-aligment: center;" text="Nom client" />
+                        <TableColumn fx:id="col4" minWidth="0.0" prefWidth="174.0" style="-fx-aligment: center;" text="Mobile de client" />
+                        <TableColumn fx:id="col5" minWidth="0.0" prefWidth="169.0" text="Date de vent" />
+                    </columns>
+                </TableView>
+                <Button fx:id="modifier_btn" layoutX="511.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #f1a418; -fx-text-fill: white; -fx-background-radius: 20;" text="modifier">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <DatePicker fx:id="date_vente" layoutX="236.0" layoutY="30.0" prefHeight="41.0" prefWidth="174.0" promptText="date de vent" styleClass="text_field" stylesheets="@style.css" />
+                <Button layoutX="416.0" layoutY="34.0" mnemonicParsing="false" onAction="#table_search" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/search.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <TextField fx:id="search_by_id" layoutX="44.0" layoutY="30.0" prefHeight="40.0" prefWidth="174.0" promptText="Vache ID" styleClass="text_field" stylesheets="@style.css" />
+                <Button layoutX="461.0" layoutY="34.0" mnemonicParsing="false" onAction="#refrech" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/refresh.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
         <VBox layoutX="1112.0" layoutY="139.0" prefHeight="435.0" prefWidth="34.0" style="-fx-background-color: white;">
             <children>
                 <Button mnemonicParsing="false" onAction="#settings" style="-fx-background-color: white;">
@@ -232,6 +279,6 @@
                 <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

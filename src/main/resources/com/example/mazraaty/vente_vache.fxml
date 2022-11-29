@@ -84,7 +84,7 @@
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                             <image>
-                                <Image url="@../../../images/auction.png" />
+                                <Image url="@../../../images/too_auction.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -149,7 +149,7 @@
          <children>
             <ImageView fitHeight="45.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/auction(1).png" />
+                  <Image url="@../../../images/too_auction.png" />
                </image>
                <HBox.margin>
                   <Insets left="19.0" />

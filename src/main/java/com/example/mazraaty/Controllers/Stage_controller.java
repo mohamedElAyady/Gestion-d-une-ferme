@@ -13,7 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.chart.*;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -21,11 +22,14 @@ import javafx.stage.Stage;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 import static com.example.mazraaty.Main.c;
@@ -34,6 +38,31 @@ public class Stage_controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    PreparedStatement pst;
+
+    @FXML
+    private Label date;
+
+    @FXML
+    private LineChart<Integer, Integer> linechart;
+
+    @FXML
+    private Circle photo;
+
+    @FXML
+    private PieChart piechart;
+
+    @FXML
+    private BarChart<String, Float> barchart;
+
+    @FXML
+    private Label pro_label;
+
+    @FXML
+    private Label emp_label;
+
+    @FXML
+    private Label tot_label;
 
     public void tableaudeboard(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/tableau_de_board.fxml"));
@@ -161,47 +190,14 @@ public class Stage_controller {
 
     }
 
-
-    @FXML
-    private Circle photo;
-
-
-    @FXML
-    private ComboBox<String> choisebox;
-    PreparedStatement pst;
-    ObservableList<String> options = FXCollections.observableArrayList(
-            "Option 1",
-            "Option 2",
-            "Option 3"
-    );
-
-    @FXML
-    void pass() {
-        choisebox.getItems().addAll(options);
-        System.out.println(choisebox.getValue());
-        try {
-
-            //changement la
-            pst = c.prepareStatement("select * from stock");
-            ResultSet rs = pst.executeQuery();
-            {
-
-
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-    }
-
     public void profil_img(Circle photo) throws SQLException {
         pst = c.prepareStatement("SELECT * FROM admin where ID = (select MAX(ID) from admin)");
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()){
             //change this path !!!!
-            String s = "C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos"+rs.getString(11);
+            Path to = (Path) Paths.get("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+rs.getString(11));
+            String s = to.toString();
             Image im = new Image(s,false);
             photo.setFill(new ImagePattern(im));
 
@@ -210,7 +206,16 @@ public class Stage_controller {
 
     public void initialize() throws SQLException {
         profil_img(photo);
+        init_date(date);
+        new Alimentation_controller().chart(this.barchart);
+        new Stage_controller().init_date(date);
     }
+
+    public void init_date(Label date){
+        LocalDateTime d = LocalDateTime.now();
+        date.setText(d.getDayOfWeek().toString()+','+d.getMonth()+' '+d.getDayOfMonth()+','+d.getYear()+" ");
+    }
+
 
 
 

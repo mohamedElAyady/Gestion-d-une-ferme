@@ -166,7 +166,7 @@ public class update_admin_infos {
         File file = fileChooser.showOpenDialog(null);
         from = (Path) Paths.get(file.toURI());
         img = hashCode()+file.getName();
-        to = (Path) Paths.get("C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\admin_photos\\"+img);
+        to = (Path) Paths.get("src/main/resources/admin_photos/"+img);
         Image im = new Image(from.toString(),false);
         photo.setFill(new ImagePattern(im));
 

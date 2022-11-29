@@ -147,7 +147,15 @@
         </VBox>
         <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
             <children>
-                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Alimentation">
+            <ImageView fitHeight="45.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/top_feed.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="19.0" />
+               </HBox.margin>
+            </ImageView>
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="402.0" style="-fx-label-padding: 20;" text="Alimentation">
                     <font>
                         <Font name="Yu Gothic Medium" size="33.0" />
                     </font>
@@ -155,29 +163,18 @@
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </Label>
-                <TextField fx:id="recherche" prefHeight="35.0" prefWidth="379.0" promptText="     recherche" styleClass="search_bar" stylesheets="@style.css">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <padding>
-                        <Insets left="7.0" />
-                    </padding>
-                </TextField>
-                <Button mnemonicParsing="false" onAction="#search" style="-fx-background-color: white;">
-                    <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/search.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="6.0" />
-                    </HBox.margin>
-                </Button>
+            <Label fx:id="today" alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="367.0" style="-fx-border-color: gray; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 11;" text="kkkkkkkkkkkkkkkkkkkkkkkkkkk" textFill="#737373">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="-11.0">
+                     <image>
+                        <Image url="@../../../images/schedule.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
             </children>
             <opaqueInsets>
                 <Insets />
@@ -227,8 +224,9 @@
                 </Button>
             <TableView fx:id="table_prod" layoutX="500.0" layoutY="340.0" prefHeight="218.0" prefWidth="291.0" styleClass="tableau" stylesheets="@style.css">
               <columns>
-                <TableColumn fx:id="col_pro1" prefWidth="145.0" styleClass="column" text="Production" />
-                <TableColumn fx:id="col_pro2" prefWidth="143.0" styleClass="column" text="Stock (Kg)" />
+                  <TableColumn fx:id="col_pro" prefWidth="37.0" text="ID" />
+                <TableColumn fx:id="col_pro1" prefWidth="165.0" styleClass="column" text="Production" />
+                <TableColumn fx:id="col_pro2" prefWidth="87.0" styleClass="column" text="Stock (Kg)" />
               </columns>
             </TableView>
             <Button layoutX="795.0" layoutY="371.0" mnemonicParsing="false" onAction="#add" prefHeight="33.0" prefWidth="47.0" style="-fx-background-color: white;">

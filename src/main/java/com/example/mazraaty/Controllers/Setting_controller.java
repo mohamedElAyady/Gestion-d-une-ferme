@@ -33,6 +33,9 @@ public class Setting_controller {
     private Parent root;
 
     @FXML
+    private Label today;
+
+    @FXML
      StackPane stackpane;
     @FXML
     private Label adresse;
@@ -141,6 +144,7 @@ public class Setting_controller {
     public void initialize() throws SQLException {
         new Stage_controller().profil_img(photo);
         new Stage_controller().profil_img(photo1);
+        new Stage_controller().init_date(today);
         pst = c.prepareStatement("SELECT * FROM admin ORDER BY ID DESC LIMIT 1");
         ResultSet rs = pst.executeQuery();
 

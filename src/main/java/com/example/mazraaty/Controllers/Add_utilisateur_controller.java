@@ -46,7 +46,7 @@ public class Add_utilisateur_controller {
             display.setText("vérifier vos informations !");
         }else {
             try {
-                pst = c.prepareStatement("insert into utilisateur(Cin,Nom,Num,Email)values(?,?,?,?)");
+                pst = c.prepareStatement("insert into utilisateur(Cin,Nom,Num,Email,Type)values(?,?,?,?,'employee')");
                 pst.setString(1, JC);
                 pst.setString(2, nom);
                 pst.setString(3, num);

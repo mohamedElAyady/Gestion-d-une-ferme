@@ -45,6 +45,8 @@ public class Production_controller {
     //changement la
     ObservableList<Production> productions = FXCollections.observableArrayList();
 
+    @FXML
+    private Label date;
 
     @FXML
     private Button modifier_btn;
@@ -336,6 +338,7 @@ public class Production_controller {
         pro_indivi.setText("-----");
         prix_total.setText("-----");
         table();
+        new Stage_controller().init_date(date);
     }
 
     public void refrech_table(ObservableList<Production> productions){
@@ -356,6 +359,7 @@ public class Production_controller {
                 p.setTotal(rs.getString("total"));
                 productions.add(p);
             }
+
 
 
         } catch (SQLException throwables) {

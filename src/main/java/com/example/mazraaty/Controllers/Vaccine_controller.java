@@ -46,6 +46,8 @@ public class Vaccine_controller {
     //changement la
     ObservableList<Vaccine> vaccines = FXCollections.observableArrayList();
 
+    @FXML
+    private Label date;
 
     @FXML
     private Button modifier_btn;
@@ -322,6 +324,7 @@ public class Vaccine_controller {
         new Stage_controller().profil_img(photo);
         id = -1;
         table();
+        new Stage_controller().init_date(date);
     }
 
     public void refrech_table(ObservableList<Vaccine> vaccines){

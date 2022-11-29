@@ -1,6 +1,5 @@
 package com.example.mazraaty.Controllers;
 
-import com.example.mazraaty.Main;
 import com.example.mazraaty.Models.Alimentation;
 import com.example.mazraaty.Models.Produit;
 import com.itextpdf.text.*;
@@ -12,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -38,9 +36,6 @@ import static com.example.mazraaty.Main.c;
 public class Alimentation_controller {
 
     private PreparedStatement pst;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     int myIndex, myindex2;
     int id = -1;
     int id2 = -1;
@@ -50,6 +45,9 @@ public class Alimentation_controller {
     ObservableList<Alimentation> alimentations = FXCollections.observableArrayList();
 
     ObservableList<Produit> produits = FXCollections.observableArrayList();
+
+    @FXML
+    private Label today;
 
     @FXML
     private BarChart<String, Float> barchart;
@@ -84,6 +82,9 @@ public class Alimentation_controller {
 
     @FXML
     private TableColumn<Alimentation, String> col2;
+
+    @FXML
+    private TableColumn<Produit, String> col_pro;
 
     @FXML
     private TableColumn<Produit, String> col_pro1;
@@ -364,7 +365,9 @@ public class Alimentation_controller {
         id = -1;
         table();
         pro_table();
-        chart();
+        chart(this.barchart);
+        new Stage_controller().init_date(today);
+
     }
 
     public void refrech_table(ObservableList<Alimentation> alimentations) {
@@ -463,6 +466,7 @@ public class Alimentation_controller {
                 }
             }
             table_prod.setItems(produits);
+            col_pro.setCellValueFactory(f -> f.getValue().ID_proProperty());
             col_pro1.setCellValueFactory(f -> f.getValue().proProperty());
             col_pro2.setCellValueFactory(f -> f.getValue().QuantiteProperty());
         } catch (SQLException ex) {
@@ -502,12 +506,10 @@ public class Alimentation_controller {
 
     }
 
-
     @FXML
     void edit(ActionEvent event) {
 
     }
-
 
     @FXML
     void remove(ActionEvent event) throws SQLException {
@@ -515,19 +517,19 @@ public class Alimentation_controller {
         st.executeUpdate();
         refrech_prod();
         barchart.getData().clear();
-        chart();
+        chart(this.barchart);
     }
 
     @FXML
     void refrech_prod() throws SQLException {
             produits.clear();
             barchart.getData().clear();
-            chart();
+            chart(this.barchart);
             pro_table();
     }
 
-    public void chart() {
-        PreparedStatement pst2;
+    public void chart(BarChart<String, Float> barchart) {
+        PreparedStatement pst;
         XYChart.Series<String, Float> series1 = new XYChart.Series<String, Float>();
         series1.setName("Stock des aliments");
         try {
@@ -541,6 +543,7 @@ public class Alimentation_controller {
                     Produit p = new Produit();
                     p.setprod(rs.getString("produit"));
                     p.setQuantite(rs.getString("quantite"));
+                    p.setID_pro(rs.getString("ID"));
                     series1.getData().add(new XYChart.Data(p.getprod(),Float.parseFloat(p.getQuantite())));
 
                 }

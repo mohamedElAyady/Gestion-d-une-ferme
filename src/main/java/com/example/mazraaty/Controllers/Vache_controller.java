@@ -43,6 +43,8 @@ public class Vache_controller {
     int id;
     ObservableList<Vache> vaches = FXCollections.observableArrayList();
 
+    @FXML
+    private Label date;
 
     @FXML
     private Button modifier_btn;
@@ -296,6 +298,7 @@ public class Vache_controller {
         new Stage_controller().profil_img(photo);
         id =-1;
         table();
+        new Stage_controller().init_date(date);
     }
 
     public void refrech_table(ObservableList<Vache> vaches){

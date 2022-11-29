@@ -47,6 +47,9 @@ public class Vente_lait_controller {
     ObservableList<Vente_lait> vente_laits = FXCollections.observableArrayList();
 
     @FXML
+    private Label date;
+
+    @FXML
     private Label pro_indivi;
 
     @FXML
@@ -345,6 +348,7 @@ public class Vente_lait_controller {
         table();
         pro_indivi.setText("-----");
         prix_total.setText("-----");
+        new Stage_controller().init_date(date);
     }
 
     public void refrech_table(ObservableList<Vente_lait> vente_laits){

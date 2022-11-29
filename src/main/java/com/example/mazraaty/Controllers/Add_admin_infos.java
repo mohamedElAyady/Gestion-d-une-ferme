@@ -127,7 +127,7 @@ public class Add_admin_infos {
     ObservableList<String> options = FXCollections.observableArrayList("homme", "femme");
     FileChooser fileChooser = new FileChooser();
     public void initialize() throws SQLException {
-        Image im = new Image("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\images\\admin.png",false);
+        Image im = new Image("C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\images\\admin.png",false);
         photo.setFill(new ImagePattern(im));
         sexe.getItems().addAll(options);
     }
@@ -147,7 +147,7 @@ public class Add_admin_infos {
         File file = fileChooser.showOpenDialog(null);
         from = (Path) Paths.get(file.toURI());
         img = hashCode()+file.getName();
-        to = (Path) Paths.get("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+img);
+        to = (Path) Paths.get("C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\admin_photos\\"+img);
         //Files.copy(from,to);
         Image im = new Image(from.toString(),false);
         photo.setFill(new ImagePattern(im));
@@ -166,7 +166,7 @@ public class Add_admin_infos {
         adresse.clear();
         phone.clear();
         date.setValue(null);
-        Image im = new Image("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\images\\admin.png",false);
+        Image im = new Image("C:\\java\\Workspace\\PROJET_ICI\\src\\main\\resources\\images\\admin.png",false);
         photo.setFill(new ImagePattern(im));
     }
 

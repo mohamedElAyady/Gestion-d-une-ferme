@@ -34,6 +34,8 @@ public class Add_alimentation_controller {
     private TextField txt_field3;
     @FXML
     private TextField txt_field4;
+
+
     @FXML
     private Label display;
     @FXML

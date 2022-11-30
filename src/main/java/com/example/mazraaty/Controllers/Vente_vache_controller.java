@@ -286,9 +286,9 @@ public class Vente_vache_controller {
 
 
     }
-    @FXML
 
-             private void refrech() throws SQLException {
+    @FXML
+    private void refrech() throws SQLException {
         //changement la
         vente_vaches.clear();
         initialize();
@@ -297,9 +297,7 @@ public class Vente_vache_controller {
     }
 
     @FXML
-
-
-    public void update(ActionEvent event) throws IOException{
+    public void update(ActionEvent event) throws IOException, SQLException {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
@@ -310,9 +308,9 @@ public class Vente_vache_controller {
             alert.showAndWait();
         }else {
             //changement la
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vente_vache_infos.fxml"));
+            FXMLLoader root1 =new FXMLLoader(getClass().getResource("@../../../../mazraaty/update_vente_vache_infos.fxml"));
 
-            Scene scene1 = new Scene(root1);
+            Scene scene1 = new Scene(root1.load());
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -321,7 +319,8 @@ public class Vente_vache_controller {
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             //pass id to update controller
             pass_vente_vache t = new pass_vente_vache(id, vente_vaches);
-
+            Update_vente_vache_controller controller = root1.getController();
+            controller.get(id);
             primaryStage.setUserData(t);
             primaryStage.show();
         }
@@ -345,7 +344,6 @@ public class Vente_vache_controller {
                 p.setMobile(rs.getString("mobile"));
                 p.setPrix_vente(rs.getString("prix_vente"));
                 p.setDate_vente(rs.getString("date_vente"));
-
                 p.setKey(rs.getString("ID"));
                 //changement la
                 vente_vaches.add(p);

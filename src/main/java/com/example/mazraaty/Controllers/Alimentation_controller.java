@@ -332,7 +332,7 @@ public class Alimentation_controller {
     }
 
     @FXML
-    public void update(ActionEvent event) throws IOException {
+    public void update(ActionEvent event) throws IOException, SQLException {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
@@ -343,9 +343,9 @@ public class Alimentation_controller {
             alert.showAndWait();
         } else {
             //changement la
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_alimentation_infos.fxml"));
+            FXMLLoader root1 =new  FXMLLoader(getClass().getResource("@../../../../mazraaty/update_alimentation_infos.fxml"));
 
-            Scene scene1 = new Scene(root1);
+            Scene scene1 = new Scene(root1.load());
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -354,6 +354,9 @@ public class Alimentation_controller {
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             //pass id to update controller
             Pass_alimentation t = new Pass_alimentation(id, alimentations);
+
+            Update_alimentation_controller controller = root1.getController();
+            controller.get(id);
 
             primaryStage.setUserData(t);
             primaryStage.show();

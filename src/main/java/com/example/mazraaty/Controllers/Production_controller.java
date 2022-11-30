@@ -304,7 +304,7 @@ public class Production_controller {
     }
 
     @FXML
-    public void update(ActionEvent event) throws IOException{
+    public void update(ActionEvent event) throws IOException, SQLException {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
@@ -315,9 +315,9 @@ public class Production_controller {
             alert.showAndWait();
         }else {
             //changement la
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_milk_infos.fxml"));
+            FXMLLoader root1 = new FXMLLoader(getClass().getResource("@../../../../mazraaty/update_milk_infos.fxml"));
 
-            Scene scene1 = new Scene(root1);
+            Scene scene1 = new Scene(root1.load());
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -327,6 +327,8 @@ public class Production_controller {
             //pass id to update controller
             Pass_production t = new Pass_production(id, productions);
 
+            Update_milk_controller controller = root1.getController();
+            controller.get(id);
             primaryStage.setUserData(t);
             primaryStage.show();
         }
@@ -352,6 +354,7 @@ public class Production_controller {
             while (rs.next()) {
                 //changement la
                 Production p = new Production();
+                p.setKey(rs.getString("ID"));
                 p.setId(rs.getString("ID_vache"));
                 p.setDate(rs.getString("date_enrg"));
                 p.setLitres(rs.getString("litres"));

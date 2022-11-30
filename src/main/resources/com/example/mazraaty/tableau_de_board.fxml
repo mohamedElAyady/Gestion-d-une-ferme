@@ -252,12 +252,12 @@
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
-            <BarChart fx:id="barchart" layoutX="434.0" layoutY="327.0" prefHeight="238.0" prefWidth="400.0">
+            <BarChart fx:id="barchart" layoutX="425.0" layoutY="327.0" prefHeight="238.0" prefWidth="420.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis prefHeight="19.0" prefWidth="375.0" side="TOP" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis prefHeight="197.0" prefWidth="26.0" side="LEFT" />
               </yAxis>
             </BarChart>
             <Line endX="310.9000244140625" layoutX="460.0" layoutY="112.0" startX="-360.1000061035156" stroke="#00000093" strokeWidth="3.0" />
@@ -279,7 +279,7 @@
                 </Button>
                 <Button mnemonicParsing="false" onAction="#print" prefHeight="48.0" prefWidth="40.0" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="33.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/printer.png" />
                             </image>

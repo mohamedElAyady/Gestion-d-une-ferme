@@ -113,18 +113,7 @@ public class Dashboard_controller {
 
     public void print(ActionEvent event) throws IOException, DocumentException {
 
-        String file_name = "src/main/resources/PDF/test.pdf";
-        Document document = new Document();
-
-        PdfWriter.getInstance(document,new FileOutputStream(file_name));
-        document.open();
-
-        Paragraph para = new Paragraph("this is a test");
-        document.add(para);
-        document.close();
-
-
-
+        System.out.println("not working here !");
 
     }
 
@@ -142,7 +131,8 @@ public class Dashboard_controller {
         Float s = null;
         XYChart.Series series = new XYChart.Series();
         series.setName("Production par mois");
-        for (int j = 1; j < 13; j++) {
+        LocalDateTime d = LocalDateTime.now();
+        for (int j = 1; j <= d.getMonthValue() ; j++) {
             if (j<10) {
                 pst = c.prepareStatement("SELECT SUM(litres) FROM production WHERE date_enrg LIKE '2022-0" + j + "%'; ");
 
@@ -156,26 +146,7 @@ public class Dashboard_controller {
             }
             series.getData().add(new XYChart.Data(String.valueOf(j),s));
         }
-
-
-
-/*
-
-        series.getData().add(new XYChart.Data("Jan",1900));
-        series.getData().add(new XYChart.Data("Feb",1400));
-        series.getData().add(new XYChart.Data("March",1300));
-        series.getData().add(new XYChart.Data("April",200));
-        series.getData().add(new XYChart.Data("May",1000));
-        series.getData().add(new XYChart.Data("June",500));
-        series.getData().add(new XYChart.Data("July",1000));
-        series.getData().add(new XYChart.Data("Aug",300));
-        series.getData().add(new XYChart.Data("Sep",1000));
-        series.getData().add(new XYChart.Data("Oct",1240));
-        series.getData().add(new XYChart.Data("Nov",900));
-        series.getData().add(new XYChart.Data("Dec",1000));*/
-
         linechart.getData().add(series);
-
 
     }
 

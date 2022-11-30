@@ -27,7 +27,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="submit" layoutX="259.0" layoutY="418.0" mnemonicParsing="false" onAction="#update" prefHeight="48.0" prefWidth="186.0" style="-fx-background-color: #008037;" text="modifier" textFill="WHITE">
+        <Button fx:id="submit" layoutX="207.0" layoutY="418.0" mnemonicParsing="false" onAction="#update" prefHeight="48.0" prefWidth="186.0" style="-fx-background-color: #008037;" text="modifier" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>
@@ -37,15 +37,10 @@
                 <Font size="20.0" />
             </font>
         </Label>
-      <Button layoutX="179.0" layoutY="418.0" mnemonicParsing="false" onAction="#get" prefHeight="48.0" prefWidth="68.0" style="-fx-background-color: gray;" text="Get" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Button>
       <TextField fx:id="txt_field1" layoutX="13.0" layoutY="100.0" prefHeight="48.0" prefWidth="263.0" promptText="Vache ID" styleClass="text_field" stylesheets="@style.css" />
       <TextField fx:id="txt_field2" layoutX="326.0" layoutY="100.0" prefHeight="48.0" prefWidth="263.0" promptText="vaccin" styleClass="text_field" stylesheets="@style.css" />
       <DatePicker fx:id="date_picker" layoutX="13.0" layoutY="187.0" prefHeight="48.0" prefWidth="263.0" promptText="Date d'enregistrement" styleClass="text_field" stylesheets="@style.css" />
-      <TextField fx:id="txt_field3" layoutX="123.0" layoutY="279.0" prefHeight="79.0" prefWidth="353.0" promptText="Litres collectés" styleClass="text_field" stylesheets="@style.css" />
+      <TextField fx:id="txt_field3" layoutX="123.0" layoutY="279.0" prefHeight="79.0" prefWidth="353.0" promptText="Remarque" styleClass="text_field" stylesheets="@style.css" />
       <DatePicker fx:id="date_picker1" layoutX="326.0" layoutY="187.0" prefHeight="48.0" prefWidth="263.0" promptText="Date du prochain vaccin" styleClass="text_field" stylesheets="@style.css" />
     </children>
 </AnchorPane>

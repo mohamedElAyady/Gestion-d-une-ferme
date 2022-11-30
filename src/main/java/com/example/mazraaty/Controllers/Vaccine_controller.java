@@ -292,7 +292,7 @@ public class Vaccine_controller {
     }
 
     @FXML
-    public void update(ActionEvent event) throws IOException{
+    public void update(ActionEvent event) throws IOException, SQLException {
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
@@ -303,9 +303,9 @@ public class Vaccine_controller {
             alert.showAndWait();
         }else {
             //changement la
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vaccin_infos.fxml"));
+            FXMLLoader root1 =new FXMLLoader(getClass().getResource("@../../../../mazraaty/update_vaccin_infos.fxml"));
 
-            Scene scene1 = new Scene(root1);
+            Scene scene1 = new Scene(root1.load());
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -314,7 +314,8 @@ public class Vaccine_controller {
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             //pass id to update controller
             Pass_vaccine t = new Pass_vaccine(id, vaccines);
-
+            Update_vaccin_controller controller = root1.getController();
+            controller.get(id);
             primaryStage.setUserData(t);
             primaryStage.show();
         }
@@ -338,6 +339,7 @@ public class Vaccine_controller {
             while (rs.next()) {
                 //changement la
                 Vaccine p = new Vaccine();
+                p.setKey(rs.getString("ID"));
                 p.setID_vache(rs.getString("ID_vache"));
                 p.setDate_enrg(rs.getString("date_enrg"));
                 p.setVaccine(rs.getString("vaccine"));

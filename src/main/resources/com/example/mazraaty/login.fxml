@@ -16,7 +16,7 @@
                 <Image url="@../../../images/zlij.jpg" />
             </image>
         </ImageView>
-        <TextField fx:id="username" layoutX="88.0" layoutY="156.0" prefHeight="48.0" prefWidth="311.0" style="-fx-font-size: 19;" />
+        <TextField fx:id="username" layoutX="88.0" layoutY="156.0" onAction="#log_in" prefHeight="48.0" prefWidth="311.0" style="-fx-font-size: 19;" />
         <Label layoutX="87.0" layoutY="108.0" prefHeight="48.0" prefWidth="182.0" text="USERNAME">
             <font>
                 <Font name="System Bold" size="22.0" />
@@ -27,8 +27,8 @@
                 <Font name="System Bold" size="22.0" />
             </font>
         </Label>
-        <PasswordField fx:id="password" layoutX="87.0" layoutY="252.0" prefHeight="48.0" prefWidth="311.0" style="-fx-font-size: 19;" />
-        <Button fx:id="submit" layoutX="145.0" layoutY="340.0" mnemonicParsing="false" onAction="#log_in" onKeyPressed="#log_in" onKeyTyped="#log_in" prefHeight="48.0" prefWidth="182.0" style="-fx-background-color: #008037;" text="submit" textFill="WHITE">
+        <PasswordField fx:id="password" layoutX="87.0" layoutY="252.0" onAction="#log_in" prefHeight="48.0" prefWidth="311.0" style="-fx-font-size: 19;" />
+        <Button fx:id="submit" layoutX="145.0" layoutY="340.0" mnemonicParsing="false" onAction="#log_in" prefHeight="48.0" prefWidth="182.0" style="-fx-background-color: #008037;" text="submit" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>

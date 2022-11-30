@@ -88,11 +88,7 @@ public class Update_alimentation_controller {
 
     }
     @FXML
-    public void get(ActionEvent e) throws SQLException {
-        Node node = (Node) e.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        Pass_alimentation t = (Pass_alimentation) stage.getUserData();
-        int id = t.id;
+    public void get(int id) throws SQLException {
 
         //changement la
         pst = c.prepareStatement("select * from alimentation WHERE ID = ? ");

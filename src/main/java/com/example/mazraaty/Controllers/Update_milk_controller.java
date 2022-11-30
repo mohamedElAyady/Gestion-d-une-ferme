@@ -1,6 +1,5 @@
 package com.example.mazraaty.Controllers;
 
-import com.example.mazraaty.Models.Alimentation;
 import com.example.mazraaty.Models.Production;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +36,8 @@ public class Update_milk_controller {
     private Label display;
     @FXML
     private TextField recherche;
+
+
 
     //close btn
     @FXML
@@ -92,11 +92,7 @@ public class Update_milk_controller {
     }
 
     @FXML
-    public void get(ActionEvent e) throws SQLException {
-        Node node = (Node) e.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        Pass_production t = (Pass_production) stage.getUserData();
-        int id = t.id;
+    public void get(int id) throws SQLException {
 
         //changement la
         pst = c.prepareStatement("select * from production WHERE ID = ? ");

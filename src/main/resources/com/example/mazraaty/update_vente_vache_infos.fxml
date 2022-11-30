@@ -32,7 +32,7 @@
         <DatePicker fx:id="date_picker" layoutX="412.0" layoutY="95.0" prefHeight="48.0" prefWidth="174.0" promptText="Date_vente" styleClass="text_field" stylesheets="@style.css" />
         <TextField fx:id="txt_field3" layoutX="14.0" layoutY="194.0" prefHeight="48.0" prefWidth="263.0" promptText="name_client" styleClass="text_field" stylesheets="@style.css" />
         <TextField fx:id="txt_field4" layoutX="323.0" layoutY="194.0" prefHeight="48.0" prefWidth="263.0" promptText="prix_vente" styleClass="text_field" stylesheets="@style.css" />
-        <Button fx:id="submit" layoutX="260.0" layoutY="301.0" mnemonicParsing="false" onAction="#update" prefHeight="48.0" prefWidth="186.0" style="-fx-background-color: #008037;" text="modifier" textFill="WHITE">
+        <Button fx:id="submit" layoutX="207.0" layoutY="306.0" mnemonicParsing="false" onAction="#update" prefHeight="48.0" prefWidth="186.0" style="-fx-background-color: #008037;" text="modifier" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>
@@ -42,10 +42,5 @@
                 <Font size="20.0" />
             </font>
         </Label>
-      <Button layoutX="179.0" layoutY="301.0" mnemonicParsing="false" onAction="#get" prefHeight="48.0" prefWidth="70.0" style="-fx-background-color: gray;" text="Get" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Button>
     </children>
 </AnchorPane>

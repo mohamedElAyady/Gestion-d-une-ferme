@@ -91,12 +91,7 @@ public class Update_vaccin_controller {
     }
 
     @FXML
-    public void get(ActionEvent e) throws SQLException {
-        Node node = (Node) e.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        Pass_vaccine t = (Pass_vaccine) stage.getUserData();
-        int id = t.id;
-
+    public void get(int id) throws SQLException {
         //changement la
         pst = c.prepareStatement("select * from vaccine WHERE ID = ? ");
         pst.setString(1, String.valueOf(id));

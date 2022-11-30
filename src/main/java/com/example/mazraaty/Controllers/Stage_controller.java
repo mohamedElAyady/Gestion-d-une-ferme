@@ -205,10 +205,6 @@ public class Stage_controller {
     }
 
     public void initialize() throws SQLException {
-        profil_img(photo);
-        init_date(date);
-        new Alimentation_controller().chart(this.barchart);
-        new Stage_controller().init_date(date);
     }
 
     public void init_date(Label date){

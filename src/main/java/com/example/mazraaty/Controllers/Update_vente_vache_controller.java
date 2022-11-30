@@ -91,12 +91,7 @@ public class Update_vente_vache_controller {
     }
 
     @FXML
-    public void get(ActionEvent e) throws SQLException {
-        Node node = (Node) e.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        pass_vente_vache t = (pass_vente_vache) stage.getUserData();
-        int id = t.id;
-
+    public void get(int id) throws SQLException {
         //changement la
         pst = c.prepareStatement("select * from vente_vaches WHERE ID = ? ");
         pst.setString(1, String.valueOf(id));

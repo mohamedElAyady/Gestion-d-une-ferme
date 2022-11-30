@@ -262,8 +262,8 @@ public class Utilisateur_controller {
 
             //open new stage
             //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
-            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_utilisateur.fxml"));
-            Scene scene1 = new Scene(root1);
+            FXMLLoader root1 = new FXMLLoader(getClass().getResource("@../../../../mazraaty/update_utilisateur.fxml"));
+            Scene scene1 = new Scene(root1.load());
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -273,6 +273,8 @@ public class Utilisateur_controller {
             //pass id to update controller
             Pass_utilisateur t = new Pass_utilisateur(id,utilisateurs);
 
+            Update_utilisteur_controller controller = root1.getController();
+            //controller.get(id);
             primaryStage.setUserData(t);
             primaryStage.show();}
 
@@ -323,6 +325,7 @@ public class Utilisateur_controller {
 
             while (rs.next()) {
                 Utilisateur p = new Utilisateur();
+                p.setKey(rs.getString("ID"));
                 p.setJC(rs.getString("Cin"));
                 p.setNom(rs.getString("Nom"));
                 p.setNum(rs.getString("Num"));

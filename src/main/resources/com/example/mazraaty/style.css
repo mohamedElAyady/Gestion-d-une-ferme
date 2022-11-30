@@ -31,7 +31,7 @@
 }
 
 .dashboard_pane{
-    -fx-background-color: linear-gradient(from 25px 25px to 100px 100px, #008037, #32cd32,#1f2f98);
+    -fx-background-color: linear-gradient(from 25px 25px to 100px 100px, #008037, #32cd32,#52ab85);
     -fx-background-radius:10;
 }
 

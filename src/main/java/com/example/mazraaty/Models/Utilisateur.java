@@ -10,6 +10,7 @@ public class Utilisateur {
 
     private final StringProperty num;
     private final StringProperty email;
+    private final StringProperty type;
 
 
     public Utilisateur() {
@@ -20,6 +21,7 @@ public class Utilisateur {
         num = new SimpleStringProperty(this, "num");
         email = new SimpleStringProperty(this, "email");
         key = new SimpleStringProperty(this, "key");
+        type = new SimpleStringProperty(this, "type");
 
     }
 
@@ -43,5 +45,10 @@ public class Utilisateur {
     public StringProperty emailProperty() { return email; }
     public String getEmail() { return email.get(); }
     public void setEmail(String newId) { email.set(newId); }
+    public StringProperty typeProperty() { return type; }
+
+    public String getType() { return type.get(); }
+    public void setType(String newId) { type.set(newId); }
+
 
 }

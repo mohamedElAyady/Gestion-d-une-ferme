@@ -1,28 +1,26 @@
 package com.example.mazraaty.Controllers;
 
-import com.example.mazraaty.Models.Production;
 import com.example.mazraaty.Models.Utilisateur;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import static com.example.mazraaty.Main.c;
 
 public class Add_utilisateur_controller {
     public PreparedStatement pst;
     //Infos input
-    @FXML
-    private ChoiceBox<String> choise;
 
-    private String[] status = {"3amel", "KHayat"};
     @FXML
     private TextField JC;
     @FXML
@@ -32,25 +30,34 @@ public class Add_utilisateur_controller {
     @FXML
     private TextField email;
     @FXML
+    private ComboBox<String> choisebox;
+    String[] options={"3aml", "patron"};
+
+
+    @FXML
     private Label display;
+
+
 
     @FXML
     void submit(ActionEvent event) throws IOException {
-        String JC,nom, num,email;
+        String JC,nom, num,email,type;
 
+        type = choisebox.getValue();
         JC = this.JC.getText();
         nom = this.nom.getText();
         num = this.num.getText();
         email =this.email.getText();
-        if (JC.isEmpty() || nom.isEmpty() || num.isEmpty() || email.isEmpty()   ){
+        if (JC.isEmpty() || nom.isEmpty() || num.isEmpty() || email.isEmpty() || type==null   ){
             display.setText("vérifier vos informations !");
         }else {
             try {
-                pst = c.prepareStatement("insert into utilisateur(Cin,Nom,Num,Email,Type)values(?,?,?,?,'employee')");
+                pst = c.prepareStatement("insert into utilisateur(Cin,Nom,Num,Email,Type)values(?,?,?,?,?)");
                 pst.setString(1, JC);
                 pst.setString(2, nom);
                 pst.setString(3, num);
                 pst.setString(4, email);
+                pst.setString(5, type);
                 pst.executeUpdate();
 
                 //get the data from Production_Controller using getUserData() method
@@ -81,5 +88,10 @@ public class Add_utilisateur_controller {
         stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage1.close();
     }
+    public void initialize(){
+
+        choisebox.getItems().addAll(options);
+    }
+
 
 }

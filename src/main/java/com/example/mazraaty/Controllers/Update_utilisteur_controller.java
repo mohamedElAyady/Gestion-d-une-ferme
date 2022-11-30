@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 
 import static com.example.mazraaty.Main.c;
 
@@ -30,6 +29,10 @@ public class Update_utilisteur_controller {
     private TextField num;
     @FXML
     private TextField email;
+    @FXML
+    private ComboBox<String> choisebox;
+    String[] options={"3aml", "patron"};
+
     @FXML
     private Label display;
     @FXML
@@ -57,7 +60,8 @@ public class Update_utilisteur_controller {
         // System.out.println(id);
 
 
-        String JC,nom, num,email;
+        String JC,nom, num,email,type;
+        type = choisebox.getValue();
         JC = this.JC.getText();
         nom = this.nom.getText();
         num = this.num.getText();
@@ -66,12 +70,13 @@ public class Update_utilisteur_controller {
         if (JC.isEmpty() || nom.isEmpty() || num.isEmpty() || email.isEmpty()   ){
             display.setText("vérifier vos informations !");
         }else {
-            pst = c.prepareStatement("update utilisateur set Cin=?,Nom=?,Num=?,Email=? where id = ?");
+            pst = c.prepareStatement("update utilisateur set Cin=?,Nom=?,Num=?,Email=?,Type=? where id = ?");
             pst.setString(1, JC);
             pst.setString(2, nom);
             pst.setString(3, num);
             pst.setString(4, email);
-            pst.setInt(5, id);
+            pst.setString(5, type);
+            pst.setInt(6, id);
             pst.executeUpdate();
 
             //get the data from Production_Controller using getUserData() method
@@ -91,7 +96,7 @@ public class Update_utilisteur_controller {
 
 
     public void initialize() {
-
+        choisebox.getItems().addAll(options);
 
     }
 

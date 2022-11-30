@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Utilisateur_controller">
     <children>
         <VBox prefHeight="655.0" prefWidth="264.0" style="-fx-background-color: white;">
@@ -142,41 +134,44 @@
             </opaqueInsets>
         </VBox>
         <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="-1.0" prefHeight="92.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
+            <children>
+                <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="400.0" style="-fx-label-padding: 20;" text="Utilisateur">
+                    <font>
+                        <Font name="Yu Gothic Medium" size="33.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </Label>
+                <TextField fx:id="recherche" prefHeight="35.0" prefWidth="379.0" promptText="     recherche" styleClass="search_bar" stylesheets="@style.css">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="7.0" />
+                    </padding>
+                </TextField>
+                <Button mnemonicParsing="false" onAction="#search" style="-fx-background-color: white;">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/search.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="6.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
-         <children>
-            <ImageView fitHeight="57.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/technical-support.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="19.0" />
-               </HBox.margin>
-            </ImageView>
-            <Label contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="88.0" prefWidth="402.0" style="-fx-label-padding: 20;" text="Utilisateur">
-               <font>
-                  <Font name="Yu Gothic Medium" size="33.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Label>
-            <Label fx:id="date" alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="367.0" style="-fx-border-color: gray; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 11;" text="kkkkkkkkkkkkkkkkkkkkkkkkkkk" textFill="#737373">
-               <font>
-                  <Font size="22.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="-11.0">
-                     <image>
-                        <Image url="@../../../images/schedule.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
         </HBox>
-        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;">
+        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="92.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;">
             <children>
                 <Button layoutX="669.0" layoutY="29.0" mnemonicParsing="false" onAction="#add_infos" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #52ab85; -fx-text-fill: white; -fx-background-radius: 20;" text="Ajouter">
                     <font>
@@ -186,18 +181,19 @@
                 <Line endX="424.0" layoutX="340.0" layoutY="83.0" startX="-253.0" stroke="#0000007c" />
                 <TableView fx:id="table1" layoutX="3.0" layoutY="99.0" prefHeight="400.0" prefWidth="842.0" styleClass="tableau" stylesheets="@style.css">
                     <columns>
-                        <TableColumn fx:id="col_cin" minWidth="0.0" prefWidth="210.0" style="-fx-aligment: center;" text="CIN d'emploe" />
-                        <TableColumn fx:id="col_nom" minWidth="0.0" prefWidth="210.0" style="-fx-aligment: center;" text="Nom d'emploe" />
-                        <TableColumn fx:id="col_num" minWidth="0.0" prefWidth="210.0" style="-fx-aligment: center;" text="Numero du telephone" />
-                        <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="269.0" style="-fx-aligment: center;" text="Emaile d'emploe" />
+                        <TableColumn fx:id="col_cin" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="CIN d'emploe" />
+                        <TableColumn fx:id="col_nom" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Nom d'emploe" />
+                        <TableColumn fx:id="col_num" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Numero du telephone" />
+                        <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="170.0" style="-fx-aligment: center;" text="Emaile d'emploe" />
+                  <TableColumn fx:id="col_type" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Type d'emploe" />
                     </columns>
                 </TableView>
-                <Button fx:id="modifier_btn" layoutX="511.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #f1a418; -fx-text-fill: white; -fx-background-radius: 20;" text="modifier">
+                <Button fx:id="modifier_btn" layoutX="516.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #f1a418; -fx-text-fill: white; -fx-background-radius: 20;" text="modifier">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="282.0" layoutY="37.0" mnemonicParsing="false" onAction="#table_search" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
+                <Button layoutX="271.0" layoutY="35.0" mnemonicParsing="false" onAction="#table_search" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
                <graphic>
                         <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -206,7 +202,7 @@
                         </ImageView>
                </graphic></Button>
                 <TextField fx:id="search_by_id" layoutX="97.0" layoutY="30.0" prefHeight="40.0" prefWidth="174.0" promptText="CIN" styleClass="text_field" stylesheets="@style.css" />
-                <Button layoutX="459.0" layoutY="35.0" mnemonicParsing="false" onAction="#refrech" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
+                <Button layoutX="310.0" layoutY="35.0" mnemonicParsing="false" onAction="#refrech" prefHeight="22.0" prefWidth="29.0" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -215,6 +211,11 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Button layoutX="360.0" layoutY="30.0" mnemonicParsing="false" onAction="#suprimer" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 20;" text="suprimer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
         <VBox layoutX="1112.0" layoutY="139.0" prefHeight="435.0" prefWidth="34.0" style="-fx-background-color: white;">
@@ -272,6 +273,6 @@
                 <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

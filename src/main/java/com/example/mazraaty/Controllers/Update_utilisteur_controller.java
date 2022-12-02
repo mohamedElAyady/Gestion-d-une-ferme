@@ -1,5 +1,6 @@
 package com.example.mazraaty.Controllers;
 
+import com.example.mazraaty.Models.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.example.mazraaty.Main.c;
@@ -92,7 +94,32 @@ public class Update_utilisteur_controller {
 
         }
 
+    }@FXML
+    public void get(int id) throws SQLException {
+
+        //changement la
+        pst = c.prepareStatement("select * from utilisateur WHERE ID = ? ");
+        pst.setString(1, String.valueOf(id));
+
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            Utilisateur p = new Utilisateur();
+            p.setJC(rs.getString("Cin"));
+            p.setNom(rs.getString("Nom"));
+            p.setNum(rs.getString("Num"));
+            p.setEmail(rs.getString("Email"));
+            p.setType(rs.getString("Type"));
+
+           JC.setText(p.getJC());
+            nom.setText(p.getNom());
+            num.setText(p.getNum());
+            email.setText(p.getEmail());
+            choisebox.setValue(p.getType());
+
+
+        }
     }
+
 
 
     public void initialize() {

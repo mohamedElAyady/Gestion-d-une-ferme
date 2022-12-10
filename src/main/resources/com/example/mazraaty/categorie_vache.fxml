@@ -11,9 +11,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Stage_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1170.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mazraaty.Controllers.Categorie_vache_controller">
     <children>
         <VBox prefHeight="655.0" prefWidth="264.0" style="-fx-background-color: white;">
             <children>
@@ -176,7 +177,102 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;" />
+        <AnchorPane fx:id="Content" layoutX="264.0" layoutY="91.0" prefHeight="565.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <VBox layoutX="122.0" layoutY="83.0" prefHeight="200.0" prefWidth="270.0" style="-fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 3; -fx-background-color: linear-gradient(to top, #33cc33 0%, #00ffff 100%); -fx-background-radius: 20;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="264.0" text="Vache latière" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Vache_latière" alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="264.0" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#tableau1" prefHeight="51.0" prefWidth="56.0" style="-fx-background-color: none;">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/showicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <VBox layoutX="122.0" layoutY="318.0" prefHeight="200.0" prefWidth="270.0" style="-fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 3; -fx-background-color: linear-gradient(to top, #33cc33 0%, #00ffff 100%); -fx-background-radius: 20;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="270.0" text="Taureau" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Taureau" alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="270.0" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#tableau3" prefHeight="51.0" prefWidth="56.0" style="-fx-background-color: NONE;">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/showicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox layoutX="522.0" layoutY="83.0" prefHeight="200.0" prefWidth="270.0" style="-fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 3; -fx-background-color: linear-gradient(to top, #33cc33 0%, #00ffff 100%); -fx-background-radius: 20;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="270.0" text="Petit vache" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Petit_vache" alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="264.0" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#tableau2" prefHeight="51.0" prefWidth="56.0" style="-fx-background-color: NONE;">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/showicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox layoutX="523.0" layoutY="318.0" prefHeight="200.0" prefWidth="270.0" style="-fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 3; -fx-background-color: linear-gradient(to top, #33cc33 0%, #00ffff 100%)linear-gradient(to top, #33cc33 0%, #00ffff 100%); -fx-background-radius: 20;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="270.0" text="Mère vache" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Mère_vache" alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="270.0" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#tableau4" prefHeight="51.0" prefWidth="56.0" style="-fx-background-color: NONE;">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/showicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <Line endX="672.0" layoutX="161.0" layoutY="302.0" startX="-147.0" />
+            <Line endX="291.0" endY="-290.0" layoutX="166.0" layoutY="316.0" startX="291.0" startY="224.0" />
+         </children></AnchorPane>
         <VBox layoutX="1112.0" layoutY="139.0" prefHeight="435.0" prefWidth="34.0" style="-fx-background-color: white;">
             <children>
                 <Button mnemonicParsing="false" onAction="#settings" style="-fx-background-color: white;">
@@ -232,6 +328,6 @@
                 <Insets top="25.0" />
             </padding>
         </VBox>
-        <Circle fx:id="photo" fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fill="DODGERBLUE" layoutX="1140.0" layoutY="103.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
     </children>
 </AnchorPane>

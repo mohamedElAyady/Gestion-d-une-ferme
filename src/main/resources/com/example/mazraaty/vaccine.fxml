@@ -188,8 +188,8 @@
                 <TableView fx:id="table" layoutX="3.0" layoutY="99.0" prefHeight="394.0" prefWidth="842.0" styleClass="tableau" stylesheets="@style.css">
                     <columns>
                         <TableColumn fx:id="col1" minWidth="0.0" prefWidth="164.0" text="Vache ID" />
-                        <TableColumn fx:id="col3" minWidth="0.0" prefWidth="172.0" style="-fx-aligment: center;" text="Vaccin" />
-                        <TableColumn fx:id="col2" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Date d'enregistrement" />
+                        <TableColumn fx:id="col3" minWidth="0.0" prefWidth="172.0" style="-fx-aligment: center;" text="Date d'enregistrement" />
+                        <TableColumn fx:id="col2" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Vaccin" />
                         <TableColumn fx:id="col4" minWidth="0.0" prefWidth="168.0" style="-fx-aligment: center;" text="Remarque" />
                         <TableColumn fx:id="col5" minWidth="0.0" prefWidth="168.0" text="Date du prochain vaccin" />
                     </columns>

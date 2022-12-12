@@ -1,9 +1,7 @@
 package com.example.mazraaty.Controllers;
 
-import com.itextpdf.text.Document;
+import com.example.mazraaty.Models.Vaccine;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,16 +12,19 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.example.mazraaty.Main.c;
 
@@ -117,7 +118,6 @@ public class Dashboard_controller {
 
     }
 
-
     public void initialize() throws SQLException {
         new Stage_controller().profil_img(photo);
         init_linechart();
@@ -125,6 +125,7 @@ public class Dashboard_controller {
         init_statics();
         new Stage_controller().init_date(date);
         new Alimentation_controller().chart(this.barchart);
+
     }
 
     public void init_linechart() throws SQLException {

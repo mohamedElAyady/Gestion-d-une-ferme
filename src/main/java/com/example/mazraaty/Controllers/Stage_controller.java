@@ -18,8 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -155,7 +157,7 @@ public class Stage_controller {
     }
 
     public void search(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+
     }
 
     public void print(ActionEvent event) throws IOException, DocumentException {
@@ -196,8 +198,8 @@ public class Stage_controller {
 
         while (rs.next()){
             //change this path !!!!
-            Path to = (Path) Paths.get("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+rs.getString(11));
-            String s = to.toString();
+            //Path to = (Path) Paths.get("C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+rs.getString(11));
+            String s = "C:\\java\\Workspace\\MASTER_GIT\\mazraaty\\src\\main\\resources\\admin_photos\\"+rs.getString(11);
             Image im = new Image(s,false);
             photo.setFill(new ImagePattern(im));
 
@@ -211,6 +213,7 @@ public class Stage_controller {
         LocalDateTime d = LocalDateTime.now();
         date.setText(d.getDayOfWeek().toString()+','+d.getMonth()+' '+d.getDayOfMonth()+','+d.getYear()+" ");
     }
+
 
 
 

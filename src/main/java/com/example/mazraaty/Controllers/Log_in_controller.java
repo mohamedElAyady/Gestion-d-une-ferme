@@ -76,4 +76,9 @@ public class Log_in_controller {
 
     }
 
+    public void initialize(){
+        username.setText("admin");
+        password.setText("admin");
+    }
+
 }

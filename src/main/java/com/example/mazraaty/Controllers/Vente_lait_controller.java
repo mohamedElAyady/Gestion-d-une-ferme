@@ -143,9 +143,6 @@ public class Vente_lait_controller {
 
         PdfWriter.getInstance(document,new FileOutputStream(file_name));
         document.open();
-        //add image
-        Image img = Image.getInstance("src/main/resources/images/logo.png");
-        document.add(img);
 
         //add paragraph
         Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);

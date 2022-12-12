@@ -1,6 +1,8 @@
 package com.example.mazraaty.Controllers;
 
 import com.example.mazraaty.Main;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,11 +19,13 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static com.example.mazraaty.Main.c;
@@ -113,8 +117,77 @@ public class Setting_controller {
         new Stage_controller().search(event);
     }
 
-    public void print(ActionEvent event) throws IOException {
-        System.out.println("this function is not working yet !!");
+    public void print(ActionEvent event) throws IOException, DocumentException, SQLException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        String hash_name =hashCode()+"-"+dtf.format(now);
+        String file_name = "src/main/resources/PDF/Admin_infos-"+hash_name+".pdf";
+        Document document = new Document();
+
+        PdfWriter.getInstance(document,new FileOutputStream(file_name));
+        document.open();
+
+        //add paragraph
+        Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);
+        String p = "Admin informations : ";
+        Paragraph para = new Paragraph(p,f);
+        para.setAlignment(10);
+        document.add(para);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+
+        pst = c.prepareStatement("SELECT * FROM admin ORDER BY ID DESC LIMIT 1");
+        ResultSet rs = pst.executeQuery();
+
+        f = new Font(Font.FontFamily.TIMES_ROMAN, 15.0f, Font.BOLD, BaseColor.BLACK);
+        while (rs.next()) {
+            //add name
+            p = "prénom : " ;
+            para = new Paragraph(p, f);
+            para.add(rs.getString(2));
+            para.add("                                     ");
+            para.add("nom : ");
+            para.add(rs.getString(3));
+            document.add(para);
+            document.add(new Paragraph(" "));
+            //add username and password
+            p = "username : " ;
+            para = new Paragraph(p, f);
+            para.add(rs.getString(9));
+            para.add("                                     ");
+            para.add("password : ");
+            para.add(rs.getString(4));
+            document.add(para);
+            document.add(new Paragraph(" "));
+            //add email and telephone
+            p = "Email : " ;
+            para = new Paragraph(p, f);
+            para.add(rs.getString(5));
+            para.add("                           ");
+            para.add("N° téléphone : ");
+            para.add(rs.getString(10));
+            document.add(para);
+            document.add(new Paragraph(" "));
+            //add SEXE and DATE
+            p = "sexe : " ;
+            para = new Paragraph(p, f);
+            para.add(rs.getString(6));
+            para.add("                           ");
+            para.add("data de naissance : ");
+            para.add(rs.getString(7));
+            document.add(para);
+            document.add(new Paragraph(" "));
+            //aDD adresse
+            p = "adresse : " ;
+            para = new Paragraph(p, f);
+            para.add(rs.getString(8));
+            document.add(para);
+            document.add(new Paragraph(" "));
+
+        }
+        document.close();
+
     }
 
     public void close_btn(ActionEvent event) throws IOException {

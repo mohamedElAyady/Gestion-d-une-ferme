@@ -127,18 +127,15 @@ public class Vente_vache_controller {
         LocalDateTime now = LocalDateTime.now();
 
         String hash_name =hashCode()+"-"+dtf.format(now);
-        String file_name = "src/main/resources/PDF/Production-"+hash_name+".pdf";
+        String file_name = "src/main/resources/PDF/Vente_vaches-"+hash_name+".pdf";
         Document document = new Document();
 
         PdfWriter.getInstance(document,new FileOutputStream(file_name));
         document.open();
-        //add image
-        Image img = Image.getInstance("src/main/resources/images/logo.png");
-        document.add(img);
 
         //add paragraph
         Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);
-        String p = "Production Records : ";
+        String p = "Cow salesr Records : ";
         Paragraph para = new Paragraph(p,f);
         para.setAlignment(10);
         document.add(para);
@@ -146,35 +143,39 @@ public class Vente_vache_controller {
         document.add(new Paragraph(" "));
         document.add(new Paragraph(" "));
 
-        PdfPTable table = new PdfPTable(5);
+        PdfPTable table = new PdfPTable(6);
 
-        PdfPCell c1 = new PdfPCell(new Phrase("Vache ID"));
+        PdfPCell c1 = new PdfPCell(new Phrase("ID"));
         table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("litres"));
+        c1 = new PdfPCell(new Phrase("ID Vache"));
         table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("Prix/litre"));
+        c1 = new PdfPCell(new Phrase("Prix de vente"));
         table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("Total"));
+        c1 = new PdfPCell(new Phrase("Client"));
         table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("Date d'enrg"));
+        c1 = new PdfPCell(new Phrase("télé_Client"));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Date_vente"));
         table.addCell(c1);
 
         table.setHeaderRows(1);
 
         //changement la
-        pst = c.prepareStatement("select ID,date_enrg,ID_vache,litres,prix_litre,total from production");
+        pst = c.prepareStatement("SELECT * FROM vente_vaches");
         ResultSet rs = pst.executeQuery();
         {
             while (rs.next()) {
+                table.addCell(rs.getString("ID"));
                 table.addCell(rs.getString("ID_vache"));
-                table.addCell(rs.getString("litres"));
-                table.addCell(rs.getString("prix_litre"));
-                table.addCell(rs.getString("total"));
-                table.addCell(rs.getString("date_enrg"));
+                table.addCell(rs.getString("prix_vente"));
+                table.addCell(rs.getString("name_client"));
+                table.addCell(rs.getString("mobile"));
+                table.addCell(rs.getString("date_vente"));
             }
         }
 

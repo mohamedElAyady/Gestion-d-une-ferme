@@ -68,6 +68,9 @@ public class Vache_controller {
     private TableColumn<Vache, String> col_status;
 
     @FXML
+    private TableColumn<Vache, String> col_sexe;
+
+    @FXML
     private TableColumn<Vache, String> id_col;
 
     @FXML
@@ -149,8 +152,10 @@ public class Vache_controller {
 
         c1 = new PdfPCell(new Phrase("Statut"));
         table.addCell(c1);
+        c1 = new PdfPCell(new Phrase("Sexe"));
+        table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("Date d'enrg"));
+        c1 = new PdfPCell(new Phrase("date_naiss"));
         table.addCell(c1);
 
         table.setHeaderRows(1);
@@ -163,6 +168,7 @@ public class Vache_controller {
                 table.addCell(rs.getString("ID_vache"));
                 table.addCell(rs.getString("type"));
                 table.addCell(rs.getString("statut"));
+                table.addCell(rs.getString("sexe"));
                 table.addCell(rs.getString("date_naiss"));
             }
         }
@@ -212,13 +218,13 @@ public class Vache_controller {
             if(date_picker.getValue() == null){
                 String id = search_by_id.getText();
                 vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE ID_vache = ? ");
+                pst = c.prepareStatement("select date_naiss,ID_vache,sexe,type,statut from vaches WHERE ID_vache = ? ");
                 pst.setString(1, id);
                 rs = pst.executeQuery();
             }else if(search_by_id.getText().isEmpty()){
                 String  date =date_picker.getValue().toString();
                 vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE date_naiss = ? ");
+                pst = c.prepareStatement("select date_naiss,ID_vache,sexe,type,statut from vaches WHERE date_naiss = ? ");
                 pst.setString(1, date);
                 rs = pst.executeQuery();
             }
@@ -226,7 +232,7 @@ public class Vache_controller {
                 String id = search_by_id.getText();
                 String  date =date_picker.getValue().toString();
                 vaches.clear();
-                pst = c.prepareStatement("select date_naiss,ID_vache,type,statut from vaches WHERE ID_vache = ? AND  date_naiss = ? ");
+                pst = c.prepareStatement("select date_naiss,ID_vache,sexe,type,statut from vaches WHERE ID_vache = ? AND  date_naiss = ? ");
                 pst.setString(1, id);
                 pst.setString(2, date);
                 rs = pst.executeQuery();
@@ -238,6 +244,7 @@ public class Vache_controller {
                 p.setDate(rs.getString("date_naiss"));
                 p.setType(rs.getString("type"));
                 p.setStatus(rs.getString("statut"));
+                p.setSexe(rs.getString("sexe"));
 
                 vaches.add(p);
             }
@@ -246,6 +253,7 @@ public class Vache_controller {
             col_date.setCellValueFactory(f -> f.getValue().dateProperty());
             col_type.setCellValueFactory(f -> f.getValue().typeProperty());
             col_status.setCellValueFactory(f -> f.getValue().statusProperty());
+            col_sexe.setCellValueFactory(f -> f.getValue().sexeProperty());
 
 
             modifier_btn.setDisable(true);
@@ -264,18 +272,20 @@ public class Vache_controller {
         modifier_btn.setDisable(false);
     }
     @FXML
-   public void update(ActionEvent event) throws IOException{
+   public void update(ActionEvent event) throws IOException,SQLException{
+        Stage primaryStage = new Stage();
+
         if (id==-1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("ERRORE !!");
             alert.setHeaderText("Choisire une item");
             alert.showAndWait();
         }else {
-        Stage primaryStage = new Stage();
+
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
-        Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vache_infos.fxml"));
-        Scene scene1 = new Scene(root1);
+        FXMLLoader root1 = new  FXMLLoader(getClass().getResource("@../../../../mazraaty/update_vache_infos.fxml"));
+        Scene scene1 = new Scene(root1.load());
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Modifier");
         //manage maximize, minimize and close button
@@ -284,6 +294,9 @@ public class Vache_controller {
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         //pass id to update controller
             TEST2_vache t = new TEST2_vache(id,vaches);
+
+            Update_vache_controller controller = root1.getController();
+            controller.get(id);
 
         primaryStage.setUserData(t);
         primaryStage.show();}
@@ -309,6 +322,7 @@ public class Vache_controller {
                 p.setDate(rs.getString("date_naiss"));
                 p.setType(rs.getString("type"));
                 p.setStatus(rs.getString("statut"));
+                p.setStatus(rs.getString("sexe"));
 
                 vaches.add(p);
             }
@@ -324,7 +338,7 @@ public class Vache_controller {
 
 
         try {
-            pst = c.prepareStatement("select ID_vache,date_naiss,type,statut from vaches");
+            pst = c.prepareStatement("select ID_vache,sexe,date_naiss,type,statut from vaches");
             ResultSet rs = pst.executeQuery();
             {
                 while (rs.next()) {
@@ -333,6 +347,7 @@ public class Vache_controller {
                     p.setDate(rs.getString("date_naiss"));
                     p.setType(rs.getString("type"));
                     p.setStatus(rs.getString("statut"));
+                    p.setSexe(rs.getString("sexe"));
 
                     vaches.add(p);
                 }
@@ -342,6 +357,7 @@ public class Vache_controller {
             col_date.setCellValueFactory(f -> f.getValue().dateProperty());
            col_type.setCellValueFactory(f -> f.getValue().typeProperty());
            col_status.setCellValueFactory(f -> f.getValue().statusProperty());
+            col_sexe.setCellValueFactory(f -> f.getValue().sexeProperty());
 
         } catch (SQLException ex)
         {

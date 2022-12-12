@@ -185,12 +185,13 @@
                     </font>
                 </Button>
                 <Line endX="424.0" layoutX="340.0" layoutY="83.0" startX="-253.0" stroke="#0000007c" />
-                <TableView fx:id="table" layoutX="3.0" layoutY="99.0" prefHeight="400.0" prefWidth="842.0" styleClass="tableau" stylesheets="@style.css">
+                <TableView id="ID" fx:id="table" accessibleRole="TABLE_ROW" depthTest="DISABLE" layoutX="3.0" layoutY="99.0" prefHeight="400.0" prefWidth="842.0" styleClass="column" stylesheets="@style.css">
                     <columns>
-                        <TableColumn fx:id="id_col" minWidth="0.0" prefWidth="223.0" style="-fx-aligment: center;" text="Vache ID" />
-                        <TableColumn fx:id="col_type" minWidth="0.0" prefWidth="197.0" style="-fx-aligment: center;" text="Type" />
-                        <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="206.0" style="-fx-aligment: center;" text="Status" />
-                        <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="214.0" text="Date d'enregistrement" />
+                        <TableColumn fx:id="id_col" minWidth="0.0" prefWidth="181.0" style="-fx-aligment: center;" text="Vache ID" />
+                        <TableColumn fx:id="col_type" minWidth="0.0" prefWidth="176.0" style="-fx-aligment: center;" text="Type" />
+                        <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="156.0" style="-fx-aligment: center;" text="Status" />
+                        <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="168.0" text="Date d'enregistrement" />
+                  <TableColumn fx:id="col_sexe" prefWidth="159.0" text="Sexe de vache" />
                     </columns>
                 </TableView>
             <Button fx:id="modifier_btn" layoutX="511.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #f1a418; -fx-text-fill: white; -fx-background-radius: 20;" text="modifier">

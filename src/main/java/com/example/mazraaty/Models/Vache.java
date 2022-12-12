@@ -9,6 +9,7 @@ public class Vache {
     private final StringProperty type;
     private final StringProperty status;
     private final StringProperty date;
+    private final StringProperty sexe;
     private final StringProperty key;
 
 
@@ -20,6 +21,7 @@ public class Vache {
         type = new SimpleStringProperty(this, "type");
         status = new SimpleStringProperty(this, "status");
         date = new SimpleStringProperty(this, "date");
+        sexe = new SimpleStringProperty(this, "sexe");
         key = new SimpleStringProperty(this, "key");
 
     }
@@ -40,6 +42,10 @@ public class Vache {
     public StringProperty statusProperty() { return status; }
     public String getStatus() { return status.get(); }
     public void setStatus(String newId) { status.set(newId); }
+
+    public StringProperty sexeProperty() { return sexe; }
+    public String getSexe() { return sexe.get(); }
+    public void setSexe(String newId) { sexe.set(newId); }
 
 
 

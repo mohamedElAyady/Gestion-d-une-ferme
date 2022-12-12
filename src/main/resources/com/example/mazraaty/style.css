@@ -20,21 +20,11 @@
     -fx-background-radius:10;
     -fx-prompt-text-fill: #7c7c7c;
 }
-
 .tableau{
     -fx-font-size:14px;
     -fx-border-color:#000000;
+
 }
-
-.column:hover{
-    -fx-background-color: #52ab85;
+.column{
+    -fx-alignment : center;
 }
-
-.dashboard_pane{
-    -fx-background-color: linear-gradient(from 25px 25px to 100px 100px, #008037, #32cd32,#52ab85);
-    -fx-background-radius:10;
-}
-
-
-
-

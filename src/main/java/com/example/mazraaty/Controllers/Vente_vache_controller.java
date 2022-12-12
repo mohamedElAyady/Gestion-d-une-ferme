@@ -3,10 +3,6 @@ package com.example.mazraaty.Controllers;
 import com.example.mazraaty.Main;
 
 import com.example.mazraaty.Models.Vente_vache;
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,13 +16,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,8 +40,7 @@ public class Vente_vache_controller {
 
 
 
-    @FXML
-    private Label date;
+
 
     @FXML
     private Button modifier_btn;
@@ -78,120 +70,132 @@ public class Vente_vache_controller {
     @FXML
     private TableColumn<Vente_vache, String> col2;
 
-    public void tableaudeboard(ActionEvent event) throws IOException {
-        new Stage_controller().tableaudeboard(event);
+    @FXML
+    void tableaudeboard(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/tableau_de_board.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Tableau de board");
+        stage.show();
     }
 
-    public void utilisateur(ActionEvent event) throws IOException {
-        new Stage_controller().utilisateur(event);
+    @FXML
+    void utilisateur(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/utilisateur.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Utilisateur");
+        stage.show();
     }
 
-    public void vaccine(ActionEvent event) throws IOException {
-        new Stage_controller().vaccine(event);
+    @FXML
+    void vaccine(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vaccine.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Surveillance des vaccins");
+        stage.show();
     }
 
-    public void vente_vache(ActionEvent event) throws IOException {
-        new Stage_controller().vente_vache(event);
+    @FXML
+    void vente_vache(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vente_vache.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Vente de vaches");
+        stage.show();
     }
 
-    public void categorie_vache(ActionEvent event) throws IOException {
-        new Stage_controller().categorie_vache(event);
+    @FXML
+    void categorie_vache(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/categorie_vache.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Categorie de vache");
+        stage.show();
     }
 
-    public void alimentation(ActionEvent event) throws IOException {
-        new Stage_controller().alimentation(event);
+    @FXML
+    void alimentation(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/alimentation.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("L'alimentation");
+        stage.show();
     }
 
-    public void production(ActionEvent event) throws IOException {
-        new Stage_controller().production(event);
+    @FXML
+    void production(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/production.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Production");
+        stage.show();
     }
 
-    public void vente_lait(ActionEvent event) throws IOException {
-        new Stage_controller().vente_lait(event);
+    @FXML
+    void vente_lait(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vente_lait.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Vente de lait");
+        stage.show();
     }
 
-    public void vache(ActionEvent event) throws IOException {
-        new Stage_controller().vache(event);
+    @FXML
+    void vache(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/vache.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Vache");
+        stage.show();
     }
 
-    public void settings(ActionEvent event) throws IOException {
-        new Stage_controller().settings(event);
+    @FXML
+    void settings(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/settings.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Settings");
+        stage.show();
     }
 
-    public void search(ActionEvent event) throws IOException {
-        new Stage_controller().search(event);
+    @FXML
+    void search(ActionEvent event) throws IOException {
+        System.out.println("this function is not working yet !!");
     }
 
-    public void print(ActionEvent event) throws IOException, DocumentException, SQLException {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
-        LocalDateTime now = LocalDateTime.now();
-
-        String hash_name =hashCode()+"-"+dtf.format(now);
-        String file_name = "src/main/resources/PDF/Vente_vaches-"+hash_name+".pdf";
-        Document document = new Document();
-
-        PdfWriter.getInstance(document,new FileOutputStream(file_name));
-        document.open();
-
-        //add paragraph
-        Font f=new Font(Font.FontFamily.TIMES_ROMAN,25.0f,Font.UNDERLINE, BaseColor.RED);
-        String p = "Cow salesr Records : ";
-        Paragraph para = new Paragraph(p,f);
-        para.setAlignment(10);
-        document.add(para);
-        document.add(new Paragraph(" "));
-        document.add(new Paragraph(" "));
-        document.add(new Paragraph(" "));
-
-        PdfPTable table = new PdfPTable(6);
-
-        PdfPCell c1 = new PdfPCell(new Phrase("ID"));
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("ID Vache"));
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Prix de vente"));
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Client"));
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("télé_Client"));
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Date_vente"));
-        table.addCell(c1);
-
-        table.setHeaderRows(1);
-
-        //changement la
-        pst = c.prepareStatement("SELECT * FROM vente_vaches");
-        ResultSet rs = pst.executeQuery();
-        {
-            while (rs.next()) {
-                table.addCell(rs.getString("ID"));
-                table.addCell(rs.getString("ID_vache"));
-                table.addCell(rs.getString("prix_vente"));
-                table.addCell(rs.getString("name_client"));
-                table.addCell(rs.getString("mobile"));
-                table.addCell(rs.getString("date_vente"));
-            }
-        }
-
-        document.add(table);
-
-
-
-        document.close();
+    @FXML
+    void print(ActionEvent event) throws IOException {
+        System.out.println("this function is not working yet !!");
     }
 
-    public void close_btn(ActionEvent event) throws IOException {
-        new Stage_controller().close_btn(event);
+    @FXML
+    void close_btn(ActionEvent event) throws IOException, SQLException {
+        Stage stage1;
+        stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        c.close();
+        System.out.println("Connection closed !");
+        stage1.close();
     }
 
-    public void log_out(ActionEvent event) throws IOException {
-        new Stage_controller().log_out(event);
+    @FXML
+    void log_out(ActionEvent event) throws IOException {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage log_stage = new Stage();
+        Main log_in = new Main();
+        stage.close();
+        log_in.start(log_stage);
 
     }
 
@@ -287,9 +291,9 @@ public class Vente_vache_controller {
 
 
     }
-
     @FXML
-    private void refrech() throws SQLException {
+
+             private void refrech() throws SQLException {
         //changement la
         vente_vaches.clear();
         initialize();
@@ -298,7 +302,9 @@ public class Vente_vache_controller {
     }
 
     @FXML
-    public void update(ActionEvent event) throws IOException, SQLException {
+
+
+    public void update(ActionEvent event) throws IOException{
         Stage primaryStage = new Stage();
         //open new stage
         //Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/add_milk_infos.fxml"));
@@ -309,9 +315,9 @@ public class Vente_vache_controller {
             alert.showAndWait();
         }else {
             //changement la
-            FXMLLoader root1 =new FXMLLoader(getClass().getResource("@../../../../mazraaty/update_vente_vache_infos.fxml"));
+            Parent root1 = FXMLLoader.load(getClass().getResource("@../../../../mazraaty/update_vente_vache_infos.fxml"));
 
-            Scene scene1 = new Scene(root1.load());
+            Scene scene1 = new Scene(root1);
             primaryStage.setScene(scene1);
             primaryStage.setTitle("Modifier");
             //manage maximize, minimize and close button
@@ -320,8 +326,7 @@ public class Vente_vache_controller {
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             //pass id to update controller
             pass_vente_vache t = new pass_vente_vache(id, vente_vaches);
-            Update_vente_vache_controller controller = root1.getController();
-            controller.get(id);
+
             primaryStage.setUserData(t);
             primaryStage.show();
         }
@@ -345,6 +350,7 @@ public class Vente_vache_controller {
                 p.setMobile(rs.getString("mobile"));
                 p.setPrix_vente(rs.getString("prix_vente"));
                 p.setDate_vente(rs.getString("date_vente"));
+
                 p.setKey(rs.getString("ID"));
                 //changement la
                 vente_vaches.add(p);
@@ -416,7 +422,6 @@ public class Vente_vache_controller {
     public void initialize() throws SQLException {
         id =-1;
         table();
-        new Stage_controller().init_date(date);
     }
 
 

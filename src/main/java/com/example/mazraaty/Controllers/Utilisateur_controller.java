@@ -249,7 +249,7 @@ public class Utilisateur_controller {
     }
 
     @FXML
-    public void update(ActionEvent event) throws IOException{
+    public void update(ActionEvent event) throws IOException, SQLException {
         Stage primaryStage = new Stage();
         if (id==-1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -272,7 +272,8 @@ public class Utilisateur_controller {
             Pass_utilisateur t = new Pass_utilisateur(id,utilisateurs);
 
             Update_utilisteur_controller controller = root1.getController();
-            //controller.get(id);
+            controller.get(id);
+
             primaryStage.setUserData(t);
             primaryStage.show();}
 
@@ -327,7 +328,6 @@ public class Utilisateur_controller {
 
             while (rs.next()) {
                 Utilisateur p = new Utilisateur();
-                p.setKey(rs.getString("ID"));
                 p.setJC(rs.getString("Cin"));
                 p.setNom(rs.getString("Nom"));
                 p.setNum(rs.getString("Num"));
